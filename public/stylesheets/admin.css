@@ -1,0 +1,46 @@
+@charset "utf-8";
+@import "global.css";
+
+/* 后台 */
+.bg-body{
+  background-color: #F0F2F5;
+}
+.header{
+  height: 66px;
+  border-bottom: 1px solid  #E8E8E8;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  justify-content: center;
+}
+.header > span{
+  display: block;
+  padding-left: 20px;
+}
+.header > span img{
+  height: 36px;
+}
+.header > div{
+  display: block;
+  padding: 0 20px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: right;
+}
+.header > div a{
+  color: #333;
+  margin: 0 10px;
+}
+/* container */
+.container-wrap{
+  padding: 20px;
+}
+.container{
+  background-color: #fff;
+  padding: 20px;
+  min-height: 500px;
+}

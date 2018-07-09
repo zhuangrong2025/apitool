@@ -1,0 +1,58 @@
+@charset "utf-8";
+body, html {
+  color: #333;
+  font-family: tahoma, 'Microsoft yahei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+body{
+  font-size: 14px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+}
+body, div, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td, a, nav{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body, span, label, p, h1, h2, h3, h4, h5, h6, a, div, li, dt, dd, i, em, section, article, :after, :before, button, input, textarea {
+  background-repeat: no-repeat !important;
+  background-position: center center;
+}
+li {
+  list-style: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+}
+a {
+  color: #1890ff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+}
+a:active, a:hover {
+  color: #1890ff;
+  outline: 0;
+  text-decoration: un;
+}
+img {
+  max-width: 100% !important;
+  vertical-align: middle;
+  border: 0;
+}
+button {
+  overflow: visible;
+  border: none;
+  outline: 0;
+}
+input,button,textarea{
+  outline: 0;
+}
+em,h3{
+  font: inherit;
+  font-weight: normal;
+}

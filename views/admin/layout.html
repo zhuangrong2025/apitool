@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/stylesheets/admin.css">
+  <script src="/javascripts/jquery-3.2.1.min.js" charset="utf-8"></script>
+  <title>apitool</title>
+</head>
+<body class="bg-body">
+<!-- 头部 -->
+<div class="header">
+  <span><img src="../images/logo.png"></span>
+  <div class="menu">
+    <a href="../admin">首页</a>
+    <a href="../admin/doc">文档</a>
+    <a href="../admin/directory">目录</a>
+    <a href="#">退出</a>
+  </div>
+</div>
+<!-- //头部 -->
+<!-- 内容 -->
+<div class="container-wrap">
+  <div class="container">
+  {% block main %}内容{% endblock %}
+  </div>
+</div>
+<!-- //内容 -->
+</body>
+</html>
