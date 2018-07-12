@@ -4,6 +4,7 @@ var favicon = require("serve-favicon")
 var logger = require("morgan")
 var cookieParser = require("cookie-parser")
 var bodyParser = require("body-parser")
+var mongoose = require("mongoose")
 var swig = require("swig")
 
 
@@ -34,6 +35,14 @@ app.use("/api", require("./routes/api"))
 app.use("/", require("./routes/main"))
 app.use("/users", require("./routes/users"))
 
+/* 数据库连接 */
+mongoose.connect("mongodb://localhost:27018/apitool", function(err){
+	if(err){
+		console.log("connect failed")
+	}else {
+		console.log("connect success")
+	}
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
 	var err = new Error("Not Found")

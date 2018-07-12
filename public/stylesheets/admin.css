@@ -44,3 +44,47 @@
   padding: 20px;
   min-height: 500px;
 }
+/* 新增表单 */
+.doc-form li label{
+  display: block;
+  padding: 5px 0;
+}
+.doc-form li input[type=text]{
+  border: none;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 10px;
+  background-color: #fafafa;
+  width: 100%;
+  font-size: 14px;
+}
+.doc-form li textarea{
+  background: #fafafa;
+  padding: 10px;
+  min-height: 300px;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+}
+.btn{
+  border: none;
+  line-height: 30px;
+  text-align: center;
+  background-color: #08f;
+  color: #fff;
+  border-radius: 5px;
+  min-width: 100px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.tips{
+  text-align: center;
+  color: #f00000;
+  font-weight: bold;
+}
+/* 标题 */
+.table td,
+.table th{
+  text-align: left;
+  padding: 8px 10px;
+}

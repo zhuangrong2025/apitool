@@ -1,0 +1,54 @@
+
+{% extends "layout.html" %}
+
+{% block main %}
+<!-- 新增文档 -->
+<div class="doc-form">
+  <ul>
+    <li>
+      <label>标题：</label>
+      <input type="text" name="title" placeholder="请输入标题">
+    </li>
+    <li>
+      <label>内容：</label>
+      <textarea name="content" rows="10" placeholder="请输入内容"></textarea>
+    </li>
+  </ul>
+  <input type="button" value="保存" class="btn" id="save">
+  <div class="tips"></div>
+</div>
+<!-- //新增文档 -->
+<script type="text/javascript">
+$(function(){
+  var $btnSave = $("#save")
+  var $title = $("[name = 'title']")
+  var $content = $("[name = 'content']")
+  //点击保存
+  $btnSave.on("click",function(){
+    // 验证表单
+    if($title.val() == ''){
+      $(".tips").text("标题不能为空")
+    }else{
+      $(".tips").text("")
+      //提交请求
+      $.ajax({
+        type: "post",
+        url: "doc_add",
+        data:{
+          title : $title.val(),
+          content : $content.val(),
+        },
+        dataType: "json",
+        success: function(result){
+          $(".tips").text(result.message)
+          setTimeout(function(){
+      			window.location.href="doc"
+      		}, 500)
+        }
+      })
+    }
+  })
+})
+</script>
+
+{% endblock %}

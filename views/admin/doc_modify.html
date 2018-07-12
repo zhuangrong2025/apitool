@@ -1,0 +1,23 @@
+
+{% extends "layout.html" %}
+
+{% block main %}
+<!-- 修改页面 -->
+<div class="doc-form">
+  <ul>
+    <li>
+      <label>标题：</label>
+      <input type="text" name="title" value="{{ title }}">
+      <input type="hidden" name="id" value="{{ id }}" >
+    </li>
+    <li>
+      <label>内容：</label>
+      <textarea name="content" rows="10">{{ content }}</textarea>
+    </li>
+  </ul>
+  <input type="button" value="保存" class="btn" id="save">
+  <div class="tips"></div>
+</div>
+<!-- //修改页面 -->
+
+{% endblock %}
