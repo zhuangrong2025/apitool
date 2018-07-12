@@ -60,4 +60,18 @@ router.get("/doc/modify", function(req, res, next) {
 	res.render("admin/doc_modify", {id:id, title:title, content:content})
 })
 
+// 保存文档修改信息
+router.post("/doc/save", function(req, res, next) {
+	var id = req.body.id
+	var title = req.body.title
+	Doc.findByIdAndUpdate(id, {$set: {title: title}}, function(err){
+		if(err){
+			console.error(err)
+		}else{
+			responseData.message = "修改成功！"
+  		res.json(responseData)
+			console.log("updated123")
+		}
+	})
+})
 module.exports = router
