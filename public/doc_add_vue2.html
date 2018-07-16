@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/javascripts/vue.js"></script>
+  <script src="/javascripts/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+        $("#btn").on("click",function(){
+          console.log("ajax");
+          $.ajax({
+            type: "get",
+            url: "./doc.json",
+            dataType: "json",
+            success: function(result){
+              console.log("2");
+            }
+          })
+        })
+    })
+  </script>
+</head>
+<body>
+  <div id="app">
+    标题：
+    <ul >
+      <li v-for="item in titles">
+        名字：{{ item.name }}
+      </li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+  var app = new Vue({
+    el: '#app',
+    data: {
+      titles: []
+    },
+    created: function(){
+      var _this = this;
+      $.ajax({
+        type: "get",
+        url: "./doc.json",
+        dataType: "json",
+        success: function(result){
+          _this.titles = result.doc
+        }
+      })
+
+		},
+    methods:{
+    }
+  })
+  </script>
+
+</body>
+</html>

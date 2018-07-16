@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/javascripts/vue.js"></script>
+  <script src="/javascripts/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    标题：{{title}}
+  </div>
+  <script type="text/javascript">
+  var app = new Vue({
+    el: '#app',
+    data: {
+      title: ""
+    },
+    created: function(){
+      var _this = this;
+      $.ajax({
+  			type: "get",
+  			url: "admin/doc_add_vue",
+  			dataType: "json",
+  			success: function(result){
+          _this.title = result.title;
+  			}
+  		})
+
+      //发送json文件请求
+      
+		}
+  })
+  </script>
+
+</body>
+</html>
