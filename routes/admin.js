@@ -85,7 +85,7 @@ router.get("/doc_add_vue", function(req, res, next) {
 router.post("/add_article", function(req, res, next) {
 	var title = req.body.title
 	var article = req.body.article
-	console.log(title + "*****1" + article)
+	console.log(title + "*****" + article)
 })
 
 
