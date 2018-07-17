@@ -1,6 +1,8 @@
 var express = require("express")
 var router = express.Router()
 var Article = require("../models/article")
+var fs=require("fs")
+var path = require("path")
 
 //统一返回格式用 router.use
 var responseData
@@ -39,5 +41,15 @@ router.post("/del", function(req, res, next) {
 	Article.findByIdAndRemove(id).then(function(article){
 		res.json(article)
 	})
+})
+
+// vue 修改数据
+router.get("/edit", function(req, res, next) {
+	//var id = req.query.id
+	//console.log(id)
+	// Article.findByIdAndRemove(id).then(function(article){
+	// 	res.json(article)
+	// })
+	console.log("id")
 })
 module.exports = router
