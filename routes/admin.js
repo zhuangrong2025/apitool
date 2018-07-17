@@ -75,10 +75,12 @@ router.post("/doc/save", function(req, res, next) {
 	})
 })
 
-// 接收vue请求
+// 接收vue请求 -- 临时
 router.get("/doc_add_vue", function(req, res, next) {
 	console.log("json")
 	res.json({ title: "文档新增11" })
 })
+
+
 
 module.exports = router

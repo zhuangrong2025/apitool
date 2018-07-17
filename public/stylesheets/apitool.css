@@ -1,65 +1,101 @@
 @charset "utf-8";
-body, html {
-  color: #333;
-  font-family: tahoma, 'Microsoft yahei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
+@import "global.css";
 body{
-  font-size: 14px;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 14px;
-  line-height: 1.5;
-  color: #24292e;
+  background-color: #F0F2F5;
+}
+/* 头部 */
+.header{
+  height: 66px;
+  border-bottom: 1px solid  #E8E8E8;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  justify-content: center;
+}
+.header > span{
+  display: block;
+  padding-left: 20px;
+}
+.header > span img{
+  height: 36px;
+}
+.header > div{
+  display: block;
+  padding: 0 12px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: right;
+}
+.header > div a{
+  color: #333;
+  margin: 0 10px;
+}
+/* 工具栏 */
+.toolbar{
+  height: 45px;
+  background-color: #fff;
+  border-bottom: 1px solid  #E8E8E8;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  justify-content: flex-start;
+  padding: 0 20px 0 10px;
+}
+.toolbar > div{
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.toolbar .publish{
+  display: block;
+  width: 80px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #9C0;
+  border: none;
+  text-align:  center;
+  font-size:  14px;
+}
+.ad-container{
+  width: 1280px;
+  margin: 20px auto;
+  padding-top: 10px;
   background-color: #fff;
 }
-body, div, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td, a, nav{
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+.ad-title{
+  background-color: #fff;
+  padding: 0 50px;
 }
-body, span, label, p, h1, h2, h3, h4, h5, h6, a, div, li, dt, dd, i, em, section, article, :after, :before, button, input, textarea {
-  background-repeat: no-repeat !important;
-  background-position: center center;
-}
-li {
-  list-style: none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-}
-a {
-  color: #82318E;
-  text-decoration: none;
-  background-color: transparent;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-}
-a:active, a:hover {
-  color: #82318E;
-  outline: 0;
-  text-decoration: un;
-}
-img {
-  max-width: 100% !important;
-  vertical-align: middle;
-  border: 0;
-}
-button {
-  overflow: visible;
+.ad-title input{
   border: none;
-  outline: 0;
+  width: 100%;
+  font-size: 25px;
+  background: none;
+  height: 80px;
+  line-height: 80px;
+  background-color: transparent;
+  border-bottom: 1px dashed #D9DADC;
 }
-input,button,textarea{
-  outline: 0;
+.ad-article{
+  background-color: #fff;
+  padding: 30px 50px;
+  height: 600px;
+  min-height: 600px;
+  font-size: 16px;
 }
-em,h3{
-  font: inherit;
-  font-weight: normal;
-}
-/* 后台 */
-.admin-nav{
-  height: 58px;
-  background-color: #eee;
-  padding: 0 10px;
-  clear: both;
+.art-area {
+  background-color: #fff;
+  border: none;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  font-size: 16px;
 }

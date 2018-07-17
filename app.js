@@ -43,6 +43,13 @@ mongoose.connect("mongodb://localhost:27018/apitool", function(err){
 		console.log("connect success")
 	}
 })
+
+app.post("/add_article", function(req, res, next) {
+	var title = req.body.title
+	var article = req.body.article
+	console.log(title + "*****" + article)
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
 	var err = new Error("Not Found")
