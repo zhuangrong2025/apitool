@@ -86,9 +86,9 @@ body{
 }
 .ad-article{
   background-color: #fff;
-  padding: 30px 50px;
-  height: 600px;
-  min-height: 600px;
+  padding: 30px 40px;
+  height: 700px;
+  min-height: 700px;
   font-size: 16px;
 }
 .art-area {
@@ -98,4 +98,21 @@ body{
   height: 100%;
   padding: 10px;
   font-size: 16px;
+}
+.ad-list {
+  min-height: 800px;
+  padding: 0 30px;
+}
+/* 表格 */
+.table td,
+.table th{
+  text-align: left;
+  padding: 12px 10px;
+}
+.table th{
+  font-size: 16px;
+  border-bottom: 1px solid  #f1f1f1;
+}
+.table td{
+  border-bottom: 1px solid  #f1f1f1;
 }
