@@ -81,6 +81,12 @@ router.get("/doc_add_vue", function(req, res, next) {
 	res.json({ title: "文档新增11" })
 })
 
+// vue数据提交
+router.post("/add_article", function(req, res, next) {
+	var title = req.body.title
+	var article = req.body.article
+	console.log(title + "*****1" + article)
+})
 
 
 module.exports = router
