@@ -15,14 +15,14 @@ body{
   -webkit-box-align: center;
   justify-content: center;
 }
-.header > span{
+.header .logo{
   display: block;
   padding-left: 20px;
 }
-.header > span img{
+.header .logo img{
   height: 36px;
 }
-.header > div{
+.header .menu{
   display: block;
   padding: 0 12px;
   -webkit-flex: 1;
@@ -30,12 +30,58 @@ body{
   flex: 1;
   text-align: right;
 }
-.header > div a{
+.header .menu > a{
   display: inline-block;
-  height: 28px;
-  line-height: 28px;
   color: #333;
   margin: 0 10px;
+}
+/* 文档下拉 */
+.dropdown-lib{
+  position: relative;
+}
+.dropdown-lib ul{
+  position: absolute;
+  z-index: 99;
+  top: 39px;
+  left: -85px;
+  width: 200px;
+  border: 1px solid  #eee;
+  padding: 10px 0;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+  border-radius: 2px;
+  display: none;
+}
+.dropdown-lib li{
+  color: #888;
+  padding: 8px 10px;
+  word-break: keep-all;
+  text-align: left;
+}
+.dropdown-lib li:hover{
+  background-color: #f1f1f1;
+}
+.dropdown-lib ul::before{
+  content: '';
+  display: block;
+  background: #fff;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  border-color: transparent;
+  border-style: solid;
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotate(45deg);
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  border-top-left-radius: 2px;
+  margin-top: -2px;
+  top: -6px;
+  -webkit-box-shadow: -2px -3px 5px rgba(0,0,0,.06);
+  box-shadow: -2px -3px 5px rgba(0,0,0,.06);
+  z-index: 999;
 }
 /* 工具栏 */
 .toolbar{
@@ -187,3 +233,12 @@ body{
 .lib-list{
   padding-bottom: 50px;
 }
+/* 字体样式 */
+.icon-jiantou32:before{
+  color: #999;
+ }
+ .icon-document{
+   color: #666;
+   font-size: 15px !important;
+   margin-right: 5px;
+ }

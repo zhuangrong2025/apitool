@@ -7,15 +7,37 @@
   <link rel="stylesheet" href="/stylesheets/apitool.css">
   <script src="/javascripts/jquery-3.2.1.min.js" charset="utf-8"></script>
   <link rel="shortcut icon" href="#" />
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_1w06bmez2d2.css">
   <title>apitool</title>
+  <script>
+  $(function(){
+      $("#lib").on("mouseenter", function(){
+        $(this).find("ul").show()
+      })
+      $("#lib ul").on("mouseleave", function(){
+        $(this).hide()
+      })
+      // 点击跳转url
+      $("#lib ul li").on("click",function(){
+        var url = $(this).data("url")
+        window.location.href = url
+      })
+  })
+  </script>
 </head>
 <body class="bg-body">
 <!-- 头部 -->
 <div class="header">
-  <span><img src="/images/logo.png"></span>
+  <div class="logo"><img src="/images/logo.png"></div>
   <div class="menu">
     <a href="/admin">首页</a>
-    <a href="./article/list_article.html">文档</a>
+    <a href="javascript:;" class="dropdown-lib" id="lib">
+      <span>文档<i class="iconfont icon-jiantou32"></i></span>
+      <ul>
+        <li data-url="/article/list_article.html"><i class="iconfont icon-document"></i>智慧城市移动系统API</li>
+        <li data-url="/article/list_article.html"><i class="iconfont icon-document"></i>招商数字金融系统API</li>
+      </ul>
+    </a>
     <a href="#">目录</a>
     <a href="#">退出</a>
   </div>
