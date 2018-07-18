@@ -148,7 +148,42 @@ body{
 .list-bar .list-name span{
   margin-right: 5px;
 }
+.list-bar .list-name span:last-child{
+  color: #555;
+}
 .list-bar .list-name em{
   font-size: 16px;
   margin-right: 3px;
+}
+/* 详情页 */
+.view-title{
+  font-size: 25px;
+  background: none;
+  height: 80px;
+  line-height: 80px;
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom: 1px solid #eee;
+}
+.view-content {
+  padding: 10px;
+}
+/* 知识库 */
+.library{
+  padding: 10px 30px 0;
+  font-size: 16px;
+  min-height: 800px;
+}
+.library h3{
+  padding: 10px;
+  font-size: 16px;
+}
+.library li{
+  margin: 5px 5px 5px 20px;
+}
+.add-lib{
+  padding: 20px 10px;
+  border-top: 1px solid  #eee;
+}
+.lib-list{
+  padding-bottom: 50px;
 }

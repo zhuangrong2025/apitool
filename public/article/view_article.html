@@ -28,7 +28,7 @@
   <div class="menu">
     <a href="/admin">首页</a>
     <a href="/article/list_article.html">文档</a>
-    <a href="/admin/directory">目录</a>
+    <a href="#">目录</a>
     <a href="#">退出</a>
   </div>
 </div>
@@ -40,6 +40,8 @@
       <span>陈键锋</span>
       <em>/</em>
       <span>智慧城市移动系统（SCM）Api</span>
+      <em>/</em>
+      <span>{{ title }}</span>
     </div>
     <div class="list-opt">
       <a :href="'/article/edit_article.html?id=' + id" class="publish">编辑</a>
@@ -48,11 +50,6 @@
   <!-- //工具栏 -->
   <!-- 编辑区 -->
   <div class="ad-container" v-cloak>
-    <!-- 标题 -->
-    <div class="ad-title">
-      <div class="view-title">{{ title }}</div>
-    </div>
-    <!-- //标题 -->
     <div class="ad-article">
       <div class="view-content">{{ content }}</div>
     </div>
