@@ -45,11 +45,25 @@ router.post("/del", function(req, res, next) {
 
 // vue 修改数据
 router.get("/edit", function(req, res, next) {
-	//var id = req.query.id
-	//console.log(id)
-	// Article.findByIdAndRemove(id).then(function(article){
-	// 	res.json(article)
-	// })
-	console.log("id")
+	var id = req.query.id
+	console.log(id)
+	Article.findOne({ _id: id }).then(function(article){
+		res.json(article)
+	})
+})
+// vue 保存数据
+router.post("/save", function(req, res, next) {
+	var id = req.body.id
+	var title = req.body.title
+	var content = req.body.content
+
+	Article.findByIdAndUpdate(id, {$set: {title: title, content: content}}, function(err){
+		if(err){
+			console.error(err)
+		}else{
+			responseData.message = "修改成功！"
+  		res.json(responseData)
+		}
+	})
 })
 module.exports = router
