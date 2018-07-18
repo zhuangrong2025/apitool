@@ -91,3 +91,19 @@
 .table td{
   border-bottom: 1px solid  #000;
 }
+/* 知识库 */
+.library{
+  padding: 10px 0 50px;
+  font-size: 16px;
+}
+.library h3{
+  padding: 10px;
+  font-size: 16px;
+}
+.library li{
+  margin: 5px 5px 5px 20px;
+}
+.add-lib{
+  padding: 20px 10px;
+  border-top: 1px solid  #eee;
+}

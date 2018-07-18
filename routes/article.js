@@ -46,7 +46,14 @@ router.post("/del", function(req, res, next) {
 // vue 修改数据
 router.get("/edit", function(req, res, next) {
 	var id = req.query.id
-	console.log(id)
+	Article.findOne({ _id: id }).then(function(article){
+		res.json(article)
+	})
+})
+
+// vue 查看详情
+router.get("/view", function(req, res, next) {
+	var id = req.query.id
 	Article.findOne({ _id: id }).then(function(article){
 		res.json(article)
 	})

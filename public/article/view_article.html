@@ -35,23 +35,26 @@
 <!-- //头部 -->
 <div id="apitool">
   <!-- 工具栏 -->
-  <div class="toolbar">
-    <div>
-      <img src="/images/toolbar.png">
+  <div class="list-bar">
+    <div class="list-name">
+      <span>陈键锋</span>
+      <em>/</em>
+      <span>智慧城市移动系统（SCM）Api</span>
     </div>
-
-    <a href="javascript:;" class="publish" @click="save">保存</a>
+    <div class="list-opt">
+      <a :href="'/article/edit_article.html?id=' + id" class="publish">编辑</a>
+    </div>
   </div>
   <!-- //工具栏 -->
   <!-- 编辑区 -->
   <div class="ad-container" v-cloak>
     <!-- 标题 -->
     <div class="ad-title">
-      <input  name="title" v-model="title" type="text"  placeholder="">
+      <div class="view-title">{{ title }}</div>
     </div>
     <!-- //标题 -->
     <div class="ad-article">
-      <textarea name="content"  v-model="content"  class="art-area" placeholder=""></textarea>
+      <div class="view-content">{{ content }}</div>
     </div>
   </div>
   <!-- //编辑区 -->
@@ -70,7 +73,7 @@
       // 查看对应id的数据
       $.ajax({
   			type: "get",
-  			url: "./edit?id=" + _this.id,
+  			url: "./view?id=" + _this.id,
   			dataType: "json",
   			success: function(res){
           _this.title = res.title;
@@ -79,22 +82,6 @@
 		  })
 		},
     methods:{
-      // 保存
-      save: function(){
-        $.ajax({
-    			type: "post",
-    			url: "./save",
-          data:{
-            id: this.id,
-            title: this.title,
-            content: this.content
-          },
-    			dataType: "json",
-    			success: function(result){
-            console.log(result);
-    			}
-    		})
-      }
     }
   })
   </script>

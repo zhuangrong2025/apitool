@@ -31,6 +31,9 @@ body{
   text-align: right;
 }
 .header > div a{
+  display: inline-block;
+  height: 28px;
+  line-height: 28px;
   color: #333;
   margin: 0 10px;
 }
@@ -52,17 +55,20 @@ body{
   -ms-flex: 1;
   flex: 1;
 }
-.toolbar .publish{
+.publish{
   display: block;
   width: 80px;
-  height: 32px;
-  line-height: 32px;
+  height: 28px;
+  line-height: 28px;
   border-radius: 5px;
   color: #fff;
   background-color: #9C0;
   border: none;
   text-align:  center;
   font-size:  14px;
+}
+.publish:hover{
+  color: #fff;
 }
 .ad-container{
   width: 1280px;
@@ -110,12 +116,39 @@ body{
   padding: 12px 10px;
 }
 .table th{
-  font-size: 16px;
-  border-bottom: 1px solid  #f1f1f1;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f1f1;
 }
 .table td{
-  border-bottom: 1px solid  #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
 }
 [v-cloak]{
   display: none !important;
+}
+/* 列表工具栏 */
+.list-bar{
+  height: 45px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(232, 232, 232);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  justify-content: flex-start;
+  padding: 0 20px 0 10px;
+}
+.list-bar .list-name{
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding-left: 10px;
+  color: #ccc;
+}
+.list-bar .list-name span{
+  margin-right: 5px;
+}
+.list-bar .list-name em{
+  font-size: 16px;
+  margin-right: 3px;
 }
