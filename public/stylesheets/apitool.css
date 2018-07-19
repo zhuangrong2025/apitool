@@ -2,6 +2,7 @@
 @import "global.css";
 body{
   background-color: #F0F2F5;
+  min-width: 1280px;
 }
 /* 头部 */
 .header{
@@ -42,7 +43,7 @@ body{
 .dropdown-lib ul{
   position: absolute;
   z-index: 99;
-  top: 39px;
+  top: 40px;
   left: -85px;
   width: 200px;
   border: 1px solid  #eee;
@@ -63,6 +64,15 @@ body{
   background-color: #f1f1f1;
 }
 .dropdown-lib ul::before{
+  content: '';
+  display: block;
+  height: 30px;
+  position: absolute;
+  top: -25px;
+  width: 100%;
+  left: 0;
+}
+.dropdown-lib ul::after{
   content: '';
   display: block;
   background: #fff;
@@ -242,3 +252,130 @@ body{
    font-size: 15px !important;
    margin-right: 5px;
  }
+ .icon-wenhao {
+   color: #FAAD14;
+   font-size: 26px !important;
+   vertical-align: middle;
+   margin-right: 3px;
+ }
+/* 操作提示层 */
+.ad-alert{
+  position: absolute;
+  top: 147px;
+  left: 50%;
+  border-radius: 0;
+  background-color: rgba(102, 181, 80, 1);
+  color: #fff;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  min-width: 125px;
+  padding: 4px 20px;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .1);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .1);
+  font-weight:  bold;
+}
+/* 对话框 */
+.mask {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(128, 128, 128, 0);
+}
+.dialog {
+  position: fixed;
+  z-index: 9999;
+  width: 80%;
+  max-width: 410px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 25px 0 rgba(0, 0,0, .15);
+}
+.dialog .dialog-header{
+  padding: 10px 10px 20px 20px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+  text-align:  left;
+  font-weight:  bold;
+}
+.dialog .dialog-body{
+  padding: .8rem;
+  text-align: left;
+  min-height: 123px;
+  color: #999;
+}
+.dialog .dialog-footer{
+  text-align: center;
+  min-height: 48px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 10px 20px 10px;
+}
+.dialog .dialog-footer::before{
+  content: '';
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.dialog .dialog-footer .btn{
+  border-radius: 3px;
+  height: 32px;
+  min-width: 75px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ddd;
+  cursor: pointer;
+  margin: 0 6px;
+  padding: 5px 10px;
+}
+.dialog .dialog-footer .primary{
+  color: #9C0;
+  border: 1px solid  #9C0;
+}
+.dialog span.close{
+  position: absolute;
+  display: block;
+  top: -15px;
+  right: -15px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  background-color: #ED770D;
+}
+.dialog .dialog-close{
+  position: absolute;
+  top: 0.3rem;
+  right: 0.2rem;
+  font-style: normal;
+  font-size: 21px;
+  color: #4572EF;
+  background-color: #fff;
+  width: .4rem;
+  height: .4rem;
+  line-height: .31rem;
+  border-radius: 50%;
+  padding-left: .02rem;
+  z-index: 9999;
+}
+.info-del{
+  padding: 30px 20px 10px 35px !important;
+  font-size: 18px !important;
+  color: #333 !important;
+}
+.info-del span{
+  display: inline-block;
+  vertical-align: middle;
+}

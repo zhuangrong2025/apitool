@@ -7,7 +7,7 @@
 <link rel="shortcut icon" href="#" />
 <script src="/javascripts/vue.js"></script>
 <script src="/javascripts/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_1w06bmez2d2.css">
+<link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_4s35ojdy9ic.css">
 <link rel="stylesheet" href="/stylesheets/apitool.css">
 <title></title>
 <script>
@@ -58,6 +58,9 @@ $(function(){
     </div>
   </div>
   <!-- //工具栏 -->
+  <!-- 组件 -->
+  <btn-comp></btn-comp>
+  <!-- //组件 -->
   <!-- 列表 -->
   <div class="ad-container" v-cloak>
     <div class="ad-list" >
@@ -75,7 +78,7 @@ $(function(){
           <td>cjf</td>
           <td>20180618</td>
           <td>
-            <a href="javascript:;" :id="article._id" @click="artDel(index)">删除</a>&nbsp;&nbsp;
+            <a href="javascript:;"  @click="confirm(index)">删除</a>&nbsp;&nbsp;
             <a :href="'/article/edit_article.html?id=' + article._id">修改</a>
           </td>
         </tr>
@@ -84,44 +87,76 @@ $(function(){
 
   </div>
   <!-- //列表 -->
+  <!-- 删除 -->
+  <div v-if="dialog">
+    <div class="mask"></div>
+    <div class="dialog">
+      <div class="dialog-body info-del"> <i class="iconfont icon-wenhao"></i> <span>确认删除此文章？</span></div>
+      <div class="dialog-footer">
+        <button class="btn" @click="cancel">取消</button>
+        <button class="btn primary"  @click="artDel(idx)">确定</button>
+      </div>
+    </div>
+  </div>
+  <!-- //删除 -->
+
 </div>
-  <script type="text/javascript">
-  var app = new Vue({
-    el: '#apitool',
-    data: {
-      articles: []
+<script src="/javascripts/header.js" charset="utf-8"></script>
+<script type="text/javascript">
+// vue实例
+var app = new Vue({
+  el: '#apitool',
+  components: {
+    btnComp: ButtonComp
+  },
+  data: {
+    articles: [],
+    dialog: false,
+    idx: 0
+  },
+  created: function(){
+    var _this = this;
+    // 获取列表
+    $.ajax({
+			type: "get",
+			url: "./list",
+			dataType: "json",
+			success: function(res){
+        _this.articles = res;
+			}
+	  })
+	},
+  methods:{
+    //删除确认
+    confirm: function(idx){
+      this.dialog = true
+      this.idx = idx
     },
-    created: function(){
+
+    //删除文章
+    artDel: function(idx){
       var _this = this;
-      // 获取列表
       $.ajax({
-  			type: "get",
-  			url: "./list",
-  			dataType: "json",
-  			success: function(res){
-          _this.articles = res;
-  			}
-		  })
-		},
-    methods:{
-      //删除用户
-      artDel: function(idx){
-        var _this = this;
-        $.ajax({
-           type: 'post',
-           url: './del',
-           data:{
-              id : _this.articles[idx]._id
-           },
-           dataType: 'json',
-           success: function(res){
-             _this.articles.splice(idx, 1)
-           }
-        })
-      }
-    }
-  })
-  </script>
+        type: 'post',
+        url: './del',
+        data:{
+          id : _this.articles[_this.idx]._id
+        },
+        dataType: 'json',
+        success: function(res){
+          _this.articles.splice(_this.idx, 1)
+          _this.dialog = false
+        }
+      })
+    },
+
+    //取消
+    cancel: function(){
+      this.dialog = false
+    },
+  }
+})
+</script>
 
 </body>
 </html>

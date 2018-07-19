@@ -9,7 +9,7 @@
 <script src="/javascripts/vue-router.js"></script>
 <script src="/javascripts/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="/stylesheets/apitool.css">
-<link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_1w06bmez2d2.css">
+<link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_4s35ojdy9ic.css">
 <title></title>
 <script>
 //获取url参数--封装
@@ -24,8 +24,8 @@ $(function(){
     $("#lib").on("mouseenter", function(){
       $(this).find("ul").show()
     })
-    $("#lib ul").on("mouseleave", function(){
-      $(this).hide()
+    $("#lib").on("mouseleave", function(){
+      $("#lib ul").hide()
     })
 
     // 点击跳转url

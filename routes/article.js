@@ -24,7 +24,7 @@ router.post("/add", function(req, res, next) {
 		content: content
 	})
 	article.save().then(function(info){
-		responseData.message = "提交成功！"
+		responseData.message = "保存成功！"
 		res.json(responseData)
 	})
 })

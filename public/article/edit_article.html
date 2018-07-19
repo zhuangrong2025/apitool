@@ -8,7 +8,7 @@
 <script src="/javascripts/vue.js"></script>
 <script src="/javascripts/vue-router.js"></script>
 <script src="/javascripts/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_1w06bmez2d2.css">
+<link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_4s35ojdy9ic.css">
 <link rel="stylesheet" href="/stylesheets/apitool.css">
 <title></title>
 <script>
@@ -75,6 +75,11 @@ $(function(){
     </div>
   </div>
   <!-- //编辑区 -->
+  <!-- 保存提示 -->
+  <div class="ad-alert" v-if="success">
+    <i class="iconfont icon-success"></i>  {{ msg }}
+  </div>
+  <!-- //保存提示 -->
 </div>
   <script type="text/javascript">
   var vm = new Vue({
@@ -82,7 +87,9 @@ $(function(){
     data: {
       title: "",
       content: "",
-      id: ""
+      id: "",
+      msg: "",
+      success: false
     },
     created: function(){
       var _this = this;
@@ -101,6 +108,7 @@ $(function(){
     methods:{
       // 保存
       save: function(){
+        var _this = this
         $.ajax({
     			type: "post",
     			url: "./save",
@@ -110,8 +118,12 @@ $(function(){
             content: this.content
           },
     			dataType: "json",
-    			success: function(result){
-            console.log(result);
+    			success: function(res){
+            _this.msg = res.message
+            _this.success = true
+            setTimeout(function(){
+              window.location.href = "/article/list_article.html"
+            },1000)
     			}
     		})
       }
