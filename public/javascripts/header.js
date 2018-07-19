@@ -24,6 +24,7 @@ var HeaderComp = {
     }
   },
   template: `<div class="header">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_4s35ojdy9ic.css">
   <div class="logo"><img src="/images/logo.png"></div>
   <div class="menu">
   <a href="/admin">首页</a>
@@ -38,7 +39,8 @@ var HeaderComp = {
   <a href="#">目录</a>
   <a href="#">退出</a>
   </div>
-  </div>`,
+  </div>
+  `,
   created: function(){
     // 获取请求知识库列表
 	},

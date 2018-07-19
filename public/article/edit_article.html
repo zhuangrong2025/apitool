@@ -8,7 +8,6 @@
 <script src="/javascripts/vue.js"></script>
 <script src="/javascripts/vue-router.js"></script>
 <script src="/javascripts/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_4s35ojdy9ic.css">
 <link rel="stylesheet" href="/stylesheets/apitool.css">
 <title></title>
 <script>
@@ -20,20 +19,6 @@
     if (r!=null) return unescape(r[2]); return null;
   }
 })(jQuery);
-$(function(){
-    $("#lib").on("mouseenter", function(){
-      $(this).find("ul").show()
-    })
-    $("#lib ul").on("mouseleave", function(){
-      $(this).hide()
-    })
-
-    // 点击跳转url
-    $("#lib ul li").on("click",function(){
-      var url = $(this).data("url")
-      window.location.href = url
-    })
-})
 </script>
 </head>
 <body>

@@ -7,25 +7,10 @@
 <link rel="shortcut icon" href="#" />
 <script src="/javascripts/vue.js"></script>
 <script src="/javascripts/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_4s35ojdy9ic.css">
 <link rel="stylesheet" href="/stylesheets/apitool.css">
+<link rel="stylesheet" href="/stylesheets/marked.css">
+<script src="/javascripts/marked.min.js"></script>
 <title></title>
-<script>
-$(function(){
-    $("#lib").on("mouseenter", function(){
-      $(this).find("ul").show()
-    })
-    $("#lib ul").on("mouseleave", function(){
-      $(this).hide()
-    })
-
-    // 点击跳转url
-    $("#lib ul li").on("click",function(){
-      var url = $(this).data("url")
-      window.location.href = url
-    })
-})
-</script>
 </head>
 <body>
 <div id="apitool">
@@ -48,18 +33,31 @@ $(function(){
     </div>
     <!-- //标题 -->
     <div class="ad-article">
-      <textarea name="content"  v-model="content"  class="art-area" placeholder=""></textarea>
-    </div>
+      <div class="article-origin">
+        <textarea name="content"  v-model="content"  class="art-area" placeholder="" v-on:input="artMarked"></textarea>
+      </div>
+      <div class="article-marked">
+        <!-- marked -->
+        <div class="marked-parse" id="marked-content" v-html="markedContent">
+
+        </div>
+        <!-- //marked -->
+     </div>
+   </div>
   </div>
   <!-- //编辑区 -->
   <!-- 保存提示 -->
   <div class="ad-alert" v-if="success">
-    <i class="iconfont icon-success"></i>  {{ msg }}
+    <i class="iconfont icon-success"></i> {{ msg }}
   </div>
   <!-- //保存提示 -->
 </div>
+
 <script src="/javascripts/header.js"></script>
 <script type="text/javascript">
+$(function(){
+
+})
 var app = new Vue({
   el: '#apitool',
   components: {
@@ -67,10 +65,14 @@ var app = new Vue({
   },
   data: {
     title: "文章标题",
-    content: "请输入文字",
+    content: "[Markdown Editor]",
+    markedContent: "",
     msg: "",
     success: false
   },
+  created: function(){
+    this.markedContent = this.content
+	},
   methods:{
     //发布
     publish: function(){
@@ -92,6 +94,10 @@ var app = new Vue({
 
   			}
   		})
+    },
+    // marded article
+    artMarked: function(){
+      this.markedContent = marked(this.content)
     }
   }
 })

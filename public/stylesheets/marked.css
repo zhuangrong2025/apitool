@@ -1,0 +1,5 @@
+/* 覆盖全局样式，避免影响marked的展示*/
+
+.marked-parse li{
+  list-style: circle !important;
+}

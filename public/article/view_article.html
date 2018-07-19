@@ -8,8 +8,8 @@
 <script src="/javascripts/vue.js"></script>
 <script src="/javascripts/vue-router.js"></script>
 <script src="/javascripts/jquery-3.2.1.min.js"></script>
+<script src="/javascripts/marked.min.js"></script>
 <link rel="stylesheet" href="/stylesheets/apitool.css">
-<link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_4s35ojdy9ic.css">
 <title></title>
 <script>
 //获取url参数--封装
@@ -20,20 +20,6 @@
     if (r!=null) return unescape(r[2]); return null;
   }
 })(jQuery);
-$(function(){
-    $("#lib").on("mouseenter", function(){
-      $(this).find("ul").show()
-    })
-    $("#lib").on("mouseleave", function(){
-      $("#lib ul").hide()
-    })
-
-    // 点击跳转url
-    $("#lib ul li").on("click",function(){
-      var url = $(this).data("url")
-      window.location.href = url
-    })
-})
 </script>
 </head>
 <body>
@@ -57,8 +43,8 @@ $(function(){
   <!-- //工具栏 -->
   <!-- 编辑区 -->
   <div class="ad-container" v-cloak>
-    <div class="ad-article">
-      <div class="view-content">{{ content }}</div>
+    <div class="ad-article editor">
+      <div class="view-content" v-html="content"></div>
     </div>
   </div>
   <!-- //编辑区 -->
@@ -84,10 +70,13 @@ var vm = new Vue({
 			url: "./view?id=" + _this.id,
 			dataType: "json",
 			success: function(res){
-        _this.title = res.title;
-        _this.content = res.content;
+        _this.title = res.title
+        _this.content = marked(res.content)
 			}
 	  })
+
+    // marked
+
 	},
   methods:{
   }
