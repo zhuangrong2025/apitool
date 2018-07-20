@@ -43,7 +43,7 @@ body{
 .dropdown-lib ul{
   position: absolute;
   z-index: 99;
-  top: 40px;
+  top: 22px;
   left: -85px;
   width: 200px;
   border: 1px solid  #eee;
@@ -149,7 +149,6 @@ body{
 .ad-article{
   background-color: #fff;
   padding: 0 40px 30px;
-  height: 700px;
   min-height: 700px;
   font-size: 16px;
   display: -webkit-flex;

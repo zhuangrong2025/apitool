@@ -1,5 +1,87 @@
 /* 覆盖全局样式，避免影响marked的展示*/
 
+.marked-parse{
+  font-size: 14px;
+}
 .marked-parse li{
-  list-style: circle !important;
+  list-style-type: disc !important;
+}
+/* 标题 */
+.marked-parse h1,
+.marked-parse h2,
+.marked-parse h3,
+.marked-parse h4,
+.marked-parse strong {
+  font-weight: 600;
+  color: rgb(44, 62, 80);
+}
+.marked-parse h1 {
+  margin: 0 0 1em;
+}
+.marked-parse > h2 {
+  margin: 45px 0 0.8em;
+  padding-bottom: 0.7em;
+  border-bottom: 1px solid rgb(228, 228, 228);
+}
+/* 表格 */
+.marked-parse > table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 1.2em auto;
+  padding: 0;
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+}
+.marked-parse > table td,
+.marked-parse > table th {
+  line-height: 1.5em;
+  padding: 0.4em 0.8em;
+  border: none;
+  border: 1px solid #ddd;
+}
+.marked-parse > table th {
+  font-weight: bold;
+}
+.marked-parse > table th,
+.marked-parse > table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+.marked-parse > table th code,
+.marked-parse > table tr:nth-child(2n) code {
+  background-color: #efefef;
+}
+
+/* 代码块 */
+.markdown-parse pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  border-radius: 3px;
+  word-wrap: normal;
+}
+.marked-parse pre > code{
+  background: #F8F8F8;
+  border-radius: 3px;
+  font-size: 90%;
+  padding: 10px 20px;
+  font-family: 'Roboto Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  display: block;
+  position: relative;
+}
+.marked-parse pre > code::before {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: rgb(204, 204, 204);
+  text-align: right;
+  font-size: 14px;
+  padding: 5px 10px 0;
+  line-height: 15px;
+  height: 15px;
+  font-weight: 600;
+}
+.marked-parse pre > code.language-js::before{
+  content: 'JS';
 }

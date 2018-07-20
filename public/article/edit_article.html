@@ -9,6 +9,8 @@
 <script src="/javascripts/vue-router.js"></script>
 <script src="/javascripts/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="/stylesheets/apitool.css">
+<link rel="stylesheet" href="/stylesheets/marked.css">
+<script src="/javascripts/marked.min.js"></script>
 <title></title>
 <script>
 //获取url参数--封装
@@ -42,8 +44,17 @@
     </div>
     <!-- //标题 -->
     <div class="ad-article">
-      <textarea name="content"  v-model="content"  class="art-area" placeholder=""></textarea>
-    </div>
+      <div class="article-origin">
+        <textarea name="content"  v-model="content"  class="art-area" placeholder="" v-on:input="artMarked"></textarea>
+      </div>
+      <div class="article-marked">
+        <!-- marked -->
+        <div class="marked-parse" id="marked-content" v-html="markedContent">
+
+        </div>
+        <!-- //marked -->
+     </div>
+   </div>
   </div>
   <!-- //编辑区 -->
   <!-- 保存提示 -->
@@ -62,6 +73,7 @@ var vm = new Vue({
   data: {
     title: "",
     content: "",
+    markedContent: "",
     id: "",
     msg: "",
     success: false
@@ -77,8 +89,11 @@ var vm = new Vue({
 			success: function(res){
         _this.title = res.title;
         _this.content = res.content;
+        _this.markedContent = marked(_this.content)
 			}
 	  })
+
+
 	},
   methods:{
     // 保存
@@ -101,6 +116,11 @@ var vm = new Vue({
           },1000)
   			}
   		})
+    },
+
+    // marded article
+    artMarked: function(){
+      this.markedContent = marked(this.content)
     }
   }
 })
