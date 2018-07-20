@@ -29,7 +29,7 @@
   border-collapse: collapse;
   margin: 1.2em auto;
   padding: 0;
-  display: block;
+  display: block;  /* 使width不能100%，在特殊情况比较有用*/
   overflow-x: auto;
   width: 100%;
 }
@@ -84,4 +84,23 @@
 }
 .marked-parse pre > code.language-js::before{
   content: 'JS';
+}
+ /* 段落 */
+.marked-parse p,
+.marked-parse ul,
+.marked-parse ol {
+  line-height: 1.6em;
+  margin: 1.2em 0 -1.2em;
+  padding-bottom: 1.2em;
+  position: relative;
+  z-index: 1;
+}
+.marked-parse p {
+  word-spacing: 0.05em;
+}
+
+/* 链接 */
+.marked-parse a {
+  color: rgb(32, 123, 208);
+  font-weight: 600;
 }

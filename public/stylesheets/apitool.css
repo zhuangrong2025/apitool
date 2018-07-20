@@ -3,6 +3,43 @@
 body{
   background-color: #F0F2F5;
   min-width: 1280px;
+  overflow: hidden;
+}
+/* 滚动条 */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	background-color: transparent;
+	border-radius: 8px;
+}
+::-webkit-scrollbar:hover {
+	background-color: #fff;
+}
+::-webkit-scrollbar-thumb{
+	background-color: inherit;
+	border-radius: 8px;
+	background-clip: content-box;
+	border: 2px solid transparent
+}
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-clip: content-box;
+}
+/* 鼠标滑过编辑区 */
+.article-origin,
+.article-marked{
+  -webkit-transition: background-color .5s linear;
+   background-color: #fff;
+}
+.article-origin:hover,
+.article-marked:hover {
+  background-color: #cfcfcf;
+}
+.article-marked .marked-parse{
+  background-color: #FFFFFF;
+  padding: 20px;
 }
 /* 头部 */
 .header{
@@ -15,6 +52,11 @@ body{
   -webkit-align-items: center;
   -webkit-box-align: center;
   justify-content: center;
+  position:  fixed;
+  top: 0;
+  left:  0;
+  right:  0;
+  z-index:  99999;
 }
 .header .logo{
   display: block;
@@ -42,7 +84,7 @@ body{
 }
 .dropdown-lib ul{
   position: absolute;
-  z-index: 99;
+  z-index: 999999;
   top: 22px;
   left: -85px;
   width: 200px;
@@ -105,6 +147,11 @@ body{
   -webkit-box-align: center;
   justify-content: flex-start;
   padding: 0 20px 0 10px;
+  position:  fixed;
+  top: 66px;
+  left:  0;
+  right: 0;
+  z-index:  999;
 }
 .toolbar > div{
   -webkit-flex: 1;
@@ -127,10 +174,13 @@ body{
   color: #fff;
 }
 .ad-container{
-  /* width: 1280px; */
-  margin: 20px 50px;
-  padding: 00;
   background-color: #fff;
+  position: fixed;
+  top: 135px;
+  bottom: 20px;
+  left: 50px;
+  right: 50px;
+  overflow: hidden;
 }
 .ad-title{
   background-color: #fff;
@@ -147,25 +197,49 @@ body{
   border-bottom: 1px dashed #D9DADC;
 }
 .ad-article{
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   padding: 0 40px 30px;
-  min-height: 700px;
   font-size: 16px;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
+  height: -webkit-calc(100% - 80px);
 }
 .ad-article.editor{
-  padding:30px 40px 10px;
+  padding: 30px 40px 10px;
 }
 .article-marked,
 .article-origin{
   flex: 0 0 50%;
+  position: relative;
+  height:  100%;
+  overflow:  auto;
+}
+.article-marked::after,
+.article-origin::after{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  text-align: center;
+  background-color: #ddd;
+  color: #fff;
+}
+.article-origin::after{
+  content: 'markdown';
+  left: 50%;
+  margin-left: -45px;
+}
+.article-marked::after{
+  content: 'preview';
+  left: auto;
+  margin-right: -45px;
+  right: 50%
 }
 .article-marked{
   border-left: 1px solid #ddd;
-  padding-left: 30px;
-  padding-top: 20px;
+  overflow:  auto;
 }
 .art-area {
   background-color: #fff;
@@ -176,22 +250,27 @@ body{
   font-size: 16px;
   font-family: inherit;
   color: #333;
+  /* overflow:  auto; */
+  resize: none;
 }
 .ad-list {
   min-height: 800px;
   padding: 0 30px;
 }
 /* 表格 */
-.table td,
-.table th{
+.ad-table table{
+  width: 100%;
+}
+.ad-table td,
+.ad-table th{
   text-align: left;
   padding: 12px 10px;
 }
-.table th{
+.ad-table th{
   font-size: 14px;
   border-bottom: 1px solid #f1f1f1;
 }
-.table td{
+.ad-table td{
   border-bottom: 1px solid #f1f1f1;
 }
 [v-cloak]{
@@ -209,6 +288,11 @@ body{
   -webkit-box-align: center;
   justify-content: flex-start;
   padding: 0 20px 0 10px;
+  position: fixed;
+  top: 66px;
+  left: 0;
+  right: 0;
+  z-index: 99;
 }
 .list-bar .list-name{
   -webkit-flex: 1;
@@ -238,6 +322,7 @@ body{
 }
 .view-content {
   padding: 10px;
+  width:  100%;
 }
 /* 知识库 */
 .library{
