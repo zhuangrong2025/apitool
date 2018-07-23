@@ -21,6 +21,10 @@
     if (r!=null) return unescape(r[2]); return null;
   }
 })(jQuery);
+$(function(){
+  var sch = $(".art-area")[0].scrollHeight
+  $(".art-area").css("height", (sch + 10) + "px")
+})
 </script>
 </head>
 <body>
@@ -45,7 +49,7 @@
     <!-- //标题 -->
     <div class="ad-article">
       <div class="article-origin">
-        <textarea name="content"  v-model="content"  class="art-area" placeholder="" v-on:input="artMarked"></textarea>
+        <textarea name="content" ref="texta"  v-model="content"  class="art-area" placeholder="" @input="autoHeight"></textarea>
       </div>
       <div class="article-marked">
         <!-- marked -->
@@ -73,13 +77,17 @@ var vm = new Vue({
   data: {
     title: "",
     content: "",
-    markedContent: "",
     id: "",
     msg: "",
     success: false
   },
+  computed:{
+    markedContent:function(){
+      return marked(this.content)
+    }
+  },
   created: function(){
-    var _this = this;
+    var _this = this
     _this.id = $.getUrlParam('id')
     // 查看对应id的数据
     $.ajax({
@@ -87,12 +95,11 @@ var vm = new Vue({
 			url: "./edit?id=" + _this.id,
 			dataType: "json",
 			success: function(res){
-        _this.title = res.title;
-        _this.content = res.content;
-        _this.markedContent = marked(_this.content)
+        _this.title = res.title
+        _this.content = res.content
+
 			}
 	  })
-
 
 	},
   methods:{
@@ -118,9 +125,12 @@ var vm = new Vue({
   		})
     },
 
-    // marded article
-    artMarked: function(){
-      this.markedContent = marked(this.content)
+    // textarea高度自适应
+    autoHeight: function(event) {
+      var _this = this
+      var $el = $(event.target)
+      $el.css("height", "auto")
+      $el.css("height", ($el[0].scrollHeight + 10 )+ "px")
     }
   }
 })

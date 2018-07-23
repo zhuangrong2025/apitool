@@ -34,12 +34,12 @@
     <!-- //标题 -->
     <div class="ad-article">
       <div class="article-origin">
-        <textarea name="content"  v-model="content"  class="art-area" placeholder="" v-on:input="artMarked"></textarea>
+        <textarea name="content"  v-model="content"  class="art-area" placeholder=""></textarea>
       </div>
       <div class="article-marked">
         <!-- marked -->
         <div class="marked-parse" id="marked-content" v-html="markedContent">
-        
+
         </div>
         <!-- //marked -->
      </div>
@@ -65,14 +65,15 @@ var app = new Vue({
   },
   data: {
     title: "文章标题",
-    content: "[Markdown Editor]",
-    markedContent: "",
+    content: "[Markdown Editor111111]",
     msg: "",
     success: false
   },
-  created: function(){
-    this.markedContent = this.content
-	},
+  computed:{
+    markedContent:function(){
+      return marked(this.content)
+    }
+  },
   methods:{
     //发布
     publish: function(){
@@ -95,10 +96,6 @@ var app = new Vue({
   			}
   		})
     },
-    // marded article
-    artMarked: function(){
-      this.markedContent = marked(this.content)
-    }
   }
 })
 </script>
