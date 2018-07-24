@@ -28,11 +28,13 @@ body{
 	background-clip: content-box;
 }
 /* 鼠标滑过编辑区 */
+.view-warp,
 .article-origin,
 .article-marked{
   -webkit-transition: background-color .5s linear;
   background-color: rgb(255, 255, 255);
 }
+.view-warp:hover,
 .article-origin:hover,
 .article-marked:hover {
   background-color: #cfcfcf;
@@ -154,11 +156,70 @@ body{
   right: 0;
   z-index: 99;
 }
-.toolbar > div{
+.toolbar .tb-left{
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  padding-right: 10px;
 }
+.toolbar .tb-right{
+
+}
+/* 格式栏 */
+@font-face {
+  font-family: fontello;
+  src: url(../fonts/fontello.e73a064.eot);
+  src: url(../fonts/fontello.e73a064.eot#iefix) format("embedded-opentype"),url(../fonts/fontello.8d4a4e6.woff2) format("woff2"),url(../fonts/fontello.a782baa.woff) format("woff"),url(../fonts/fontello.068ca2b.ttf) format("truetype"),url(fonts/fontello.9354499.svg#fontello) format("svg");
+  font-weight: 400;
+  font-style: normal
+}
+.toolbar .tb-format ul{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  justify-content: flex-start;
+}
+.toolbar .tb-format ul li{
+  margin-right: 4px;
+}
+.toolbar .tb-format li i{
+  display: block;
+  cursor: pointer;
+  height: 28px;
+  line-height: 28px;
+  width: 28px;
+  color: #757575;
+  border-radius: 5px;
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  vertical-align: middle;
+}
+.toolbar .tb-format li i.active,
+.toolbar .tb-format li i:hover{
+  color: #000;
+  background: #e8e8e8;
+}
+[class*="ad-format-"]:before,
+[class^="ad-format-"]:before {
+  font-family: fontello;
+  font-style: normal;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.ad-format-bold:before {
+  content: "\E800";
+}
+.ad-format-italic:before {
+  content: "\E801";
+}
+
+
+/* 发布按钮 */
 .publish{
   display: block;
   width: 80px;
@@ -257,7 +318,7 @@ body{
   resize: none;
   margin: 0;
   vertical-align: top;
-  min-height:  500px;
+  min-height: 100%;
 }
 .ad-list {
   min-height: 800px;
@@ -485,4 +546,11 @@ body{
 .info-del span{
   display: inline-block;
   vertical-align: middle;
+}
+.view-warp{
+  overflow: auto;
+}
+.view-warp .ad-article{
+  min-height: 100% !important;
+  height:  auto;
 }

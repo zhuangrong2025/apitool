@@ -22,6 +22,7 @@
   }
 })(jQuery);
 $(function(){
+  // textarea自适应高度初始化
   var sch = $(".art-area")[0].scrollHeight
   $(".art-area").css("height", (sch + 10) + "px")
 })
@@ -34,10 +35,12 @@ $(function(){
   <!-- //头部组件 -->
   <!-- 工具栏 -->
   <div class="toolbar">
-    <div>
+    <div class="tb-left">
       <img src="/images/toolbar.png">
     </div>
-    <a href="javascript:;" class="publish" @click="save">保存</a>
+    <div class="tb-right">
+      <a href="javascript:;" class="publish" @click="save">保存</a>
+    </div>
   </div>
   <!-- //工具栏 -->
   <!-- 编辑区 -->
@@ -49,7 +52,7 @@ $(function(){
     <!-- //标题 -->
     <div class="ad-article">
       <div class="article-origin">
-        <textarea name="content" ref="texta"  v-model="content"  class="art-area" placeholder="" @input="autoHeight"></textarea>
+        <textarea name="content" v-model="content"  class="art-area" placeholder="" @input="autoHeight"></textarea>
       </div>
       <div class="article-marked">
         <!-- marked -->
@@ -97,10 +100,8 @@ var vm = new Vue({
 			success: function(res){
         _this.title = res.title
         _this.content = res.content
-
 			}
 	  })
-
 	},
   methods:{
     // 保存
@@ -124,7 +125,6 @@ var vm = new Vue({
   			}
   		})
     },
-
     // textarea高度自适应
     autoHeight: function(event) {
       var _this = this

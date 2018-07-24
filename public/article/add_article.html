@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="/stylesheets/marked.css">
 <script src="/javascripts/marked.min.js"></script>
 <title></title>
+<script type="text/javascript">
+</script>
 </head>
 <body>
 <div id="apitool">
@@ -19,12 +21,21 @@
   <!-- //头部组件 -->
   <!-- 工具栏 -->
   <div class="toolbar">
-    <div>
-      <img src="/images/toolbar.png">
+    <div class="tb-left">
+      <div class="tb-format">
+        <ul>
+          <li v-for="(item, index) in formats" @click="formatApply(item.name, index)">
+            <i :class="['ad-format-' + item.name, item.isActive ? 'active' : '']" ></i>
+          </li>
+        </ul>
+      </div>
     </div>
-    <a href="javascript:;" class="publish" @click="publish">发布</a>
+    <div class="tb-right">
+      <a href="javascript:;" class="publish" @click="publish">发布</a>
+    </div>
   </div>
   <!-- //工具栏 -->
+
   <!-- 编辑区 -->
   <div class="ad-container">
     <!-- 标题 -->
@@ -34,7 +45,7 @@
     <!-- //标题 -->
     <div class="ad-article">
       <div class="article-origin">
-        <textarea name="content"  v-model="content"  class="art-area" placeholder=""></textarea>
+        <textarea name="content"  v-model="content"  class="art-area" placeholder=""  @input="autoHeight" @select="selectText"></textarea>
       </div>
       <div class="article-marked">
         <!-- marked -->
@@ -55,19 +66,30 @@
 
 <script src="/javascripts/header.js"></script>
 <script type="text/javascript">
-$(function(){
-
-})
-var app = new Vue({
+// vue
+var vm = new Vue({
   el: '#apitool',
   components: {
     headerComp: HeaderComp
   },
   data: {
     title: "文章标题",
-    content: "[Markdown Editor111111]",
+    content: "[Markdown Editor]",
     msg: "",
-    success: false
+    success: false,
+    formats: [
+      { name: "bold", isActive: false, character:"# " },
+      { name: "italic", isActive: false, character:"_"  },
+    ],
+    selectedInfo: { text: "", start: 0, end: 0}
+  },
+  mounted:function() {
+    var _this = this
+    _this.$nextTick(function () {
+      // textarea自适应高度初始化
+      var sch = $(".art-area")[0].scrollHeight
+      $(".art-area").css("height", (sch + 10) + "px")
+    })
   },
   computed:{
     markedContent:function(){
@@ -95,6 +117,44 @@ var app = new Vue({
 
   			}
   		})
+    },
+    // textarea高度自适应
+    autoHeight: function(event) {
+      var _this = this
+      var $el = $(event.target)
+      $el.css("height", "auto")
+      $el.css("height", ($el[0].scrollHeight + 10 )+ "px")
+    },
+    //选中的文字
+    selectText: function(evnet){
+      var el = event.target
+      this.selectedInfo.text = el.value.substring(el.selectionStart, el.selectionEnd)
+      this.selectedInfo.start = el.selectionStart
+      this.selectedInfo.end = el.selectionEnd
+    },
+    // 格式化文本-- 不需要保留状态
+    formatApply: function(name, i){
+      var val = this.content,
+          length = val.length,
+          start = val.substring(0, this.selectedInfo.start),
+          end = val.substring(this.selectedInfo.end, length),
+          text = this.selectedInfo.text
+      if(!text){
+        return
+      }
+      // 插入格式符
+      switch(name) {
+        // 粗体
+        case "bold":
+          this.content = start + "**" + text + "**" + end
+          break
+        // 斜体
+        case "italic":
+          this.content = start + "_" + text + "_" + end
+          break
+      }
+
+      // 清除格式-- 将选中并格式的字符push到数组中，当再次选中的字符匹配数组中的字段时，点击格式按钮则清除格式符
     },
   }
 })
