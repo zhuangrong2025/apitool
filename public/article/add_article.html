@@ -81,14 +81,13 @@ var vm = new Vue({
       { name: "bold", isActive: false, character:"# " },
       { name: "italic", isActive: false, character:"_"  },
     ],
-    selectedInfo: { text: "", start: 0, end: 0}
   },
   mounted:function() {
     var _this = this
     _this.$nextTick(function () {
       // textarea自适应高度初始化
       var sch = $(".art-area")[0].scrollHeight
-      $(".art-area").css("height", (sch + 10) + "px")
+      $(".art-area").css("height", (sch) + "px")
     })
   },
   computed:{
@@ -123,46 +122,48 @@ var vm = new Vue({
       var _this = this
       var $el = $(event.target)
       $el.css("height", "auto")
-      $el.css("height", ($el[0].scrollHeight + 10 )+ "px")
+      $el.css("height", ($el[0].scrollHeight)+ "px")
     },
     //选中的文字
     selectText: function(evnet){
       var el = event.target
-      this.selectedInfo.text = el.value.substring(el.selectionStart, el.selectionEnd)
-      this.selectedInfo.start = el.selectionStart
-      this.selectedInfo.end = el.selectionEnd
     },
     // 格式化文本-- 不需要保留状态
     formatApply: function(name, i){
-      var val = this.content,
-          length = val.length,
-          startPos = this.selectedInfo.start
-          endPos = this.selectedInfo.end
-          start = val.substring(0, startPos),
-          end = val.substring(endPos, length),
-          text = this.selectedInfo.text,
-          el = $(".art-area")[0]
-      if(!text){
+      var el = $(".art-area")[0],
+          val = el.value,
+          startPos = el.selectionStart,
+          endPos = el.selectionEnd,
+          startText = val.substring(0, startPos),
+          endText = val.substring(endPos),
+          selectedText = el.value.substring(startPos, endPos)
+      if(!selectedText){
         return
       }
-      // 插入格式符
-      switch(name) {
-        // 粗体
-        case "bold":
-          this.content = start + "**" + text + "**" + end
-          $(".art-area").focus()
-          setTimeout(function(){
-            $(".art-area")[0].setSelectionRange( startPos + 2, endPos + 2  )
-          }, 10 )
-
-          break
-        // 斜体
-        case "italic":
-          //this.content = start + "_" + text + "_" + end
-          break
+      if ('selectionStart' in el) {
+         if (startPos != endPos) {
+           // 插入格式符
+           switch(name) {
+             // 粗体
+             case "bold":
+                 this.content = startText + "**" + selectedText + "**" + endText
+                 setTimeout(function(){
+                  el.selectionStart = startPos + 2
+                  el.selectionEnd = endPos + 2
+                 }, 10)
+               break
+             // 斜体
+             case "italic":
+                 this.content = startText + "_" + selectedText + "_" + endText
+                 setTimeout(function(){
+                     el.selectionStart = startPos + 1;
+                     el.selectionEnd = endPos + 1;
+                 }, 10)
+               break
+           }
+         }
+         el.focus();
       }
-
-      // 清除格式-- 将选中并格式的字符push到数组中，当再次选中的字符匹配数组中的字段时，点击格式按钮则清除格式符
     },
   }
 })

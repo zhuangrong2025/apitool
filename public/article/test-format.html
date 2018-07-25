@@ -13,6 +13,7 @@
 <title></title>
 <script type="text/javascript">
 $(function(){
+  // 案例一
   $("#txta").on("select", function(){
     var el = $(this)[0]
     var text = el.value.substring(el.selectionStart, el.selectionEnd)
@@ -28,6 +29,24 @@ $(function(){
   })
 })
 </script>
+<script type="text/javascript">
+// 案例二
+        function Select () {
+            var input = document.getElementById ("myText");
+            if ('selectionStart' in input) {
+                input.selectionStart = 1;
+                input.selectionEnd = 5;
+                input.focus ();
+            }
+            else {  // Internet Explorer before version 9
+                var inputRange = input.createTextRange ();
+                inputRange.moveStart ("character", 1);
+                inputRange.collapse ();
+                inputRange.moveEnd ("character", 1);
+                inputRange.select ();
+            }
+        }
+    </script>
 <style>
 .tool{
   border-bottom: 1px solid  #eee;
@@ -50,9 +69,17 @@ $(function(){
 </style>
 </head>
 <body>
+  <h1>案例一</h1>
   <ul class="tool">
     <li id="bb"><i>B</i></li>
   </ul>
   <textarea name="name" rows="8" cols="80" id="txta">Already know HTML, CSS and JavaScript? Read the guide and start building things in no time!</textarea>
+
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h2>案例二</h2>
+  <input type="text" id="myText" value="Some text for testing"/>
+    <button onclick="Select ()">Select the second character!</button>
 </body>
 </html>
