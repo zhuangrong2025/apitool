@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="shortcut icon" href="#" />
+<script src="/javascripts/vue.js"></script>
+<script src="/javascripts/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="/stylesheets/apitool.css">
+<link rel="stylesheet" href="/stylesheets/marked.css">
+<script src="/javascripts/marked.min.js"></script>
+<title></title>
+<script type="text/javascript">
+$(function(){
+  $("#txta").on("select", function(){
+    var el = $(this)[0]
+    var text = el.value.substring(el.selectionStart, el.selectionEnd)
+    console.log(text);
+  })
+  $("#bb").on("click",function(){
+    var el = $("#txta")[0]
+    el.value = el.value + "33"
+
+    $("#txta").focus()
+    $("#txta")[0].setSelectionRange(1,5)
+
+  })
+})
+</script>
+<style>
+.tool{
+  border-bottom: 1px solid  #eee;
+  line-height: 36px;
+}
+.tool li li{
+  display: inline-block;
+  margin: 0 2px;
+}
+.tool li i{
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+  <ul class="tool">
+    <li id="bb"><i>B</i></li>
+  </ul>
+  <textarea name="name" rows="8" cols="80" id="txta">Already know HTML, CSS and JavaScript? Read the guide and start building things in no time!</textarea>
+</body>
+</html>

@@ -169,7 +169,7 @@ body{
 @font-face {
   font-family: fontello;
   src: url(../fonts/fontello.e73a064.eot);
-  src: url(../fonts/fontello.e73a064.eot#iefix) format("embedded-opentype"),url(../fonts/fontello.8d4a4e6.woff2) format("woff2"),url(../fonts/fontello.a782baa.woff) format("woff"),url(../fonts/fontello.068ca2b.ttf) format("truetype"),url(fonts/fontello.9354499.svg#fontello) format("svg");
+  src: url(../fonts/fontello.e73a064.eot#iefix) format("embedded-opentype"),url(../fonts/fontello.a782baa.woff) format("woff"),url(../fonts/fontello.068ca2b.ttf) format("truetype"),url(fonts/fontello.9354499.svg#fontello) format("svg");
   font-weight: 400;
   font-style: normal
 }

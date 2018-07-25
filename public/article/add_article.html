@@ -136,9 +136,12 @@ var vm = new Vue({
     formatApply: function(name, i){
       var val = this.content,
           length = val.length,
-          start = val.substring(0, this.selectedInfo.start),
-          end = val.substring(this.selectedInfo.end, length),
-          text = this.selectedInfo.text
+          startPos = this.selectedInfo.start
+          endPos = this.selectedInfo.end
+          start = val.substring(0, startPos),
+          end = val.substring(endPos, length),
+          text = this.selectedInfo.text,
+          el = $(".art-area")[0]
       if(!text){
         return
       }
@@ -147,10 +150,15 @@ var vm = new Vue({
         // 粗体
         case "bold":
           this.content = start + "**" + text + "**" + end
+          $(".art-area").focus()
+          setTimeout(function(){
+            $(".art-area")[0].setSelectionRange( startPos + 2, endPos + 2  )
+          }, 10 )
+
           break
         // 斜体
         case "italic":
-          this.content = start + "_" + text + "_" + end
+          //this.content = start + "_" + text + "_" + end
           break
       }
 
