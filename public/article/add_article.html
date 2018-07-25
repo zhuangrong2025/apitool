@@ -146,11 +146,19 @@ var vm = new Vue({
            switch(name) {
              // 粗体
              case "bold":
-                 this.content = startText + "**" + selectedText + "**" + endText
-                 setTimeout(function(){
-                  el.selectionStart = startPos + 2
-                  el.selectionEnd = endPos + 2
-                 }, 10)
+                 if(val.substring(startPos - 2, startPos) == "**" && val.substring(endPos, endPos + 2) == "**"){
+                    this.content = val.substring(0, startPos - 2) + selectedText + val.substring(endPos + 2)
+                    setTimeout(function(){
+                     el.selectionStart = startPos - 2
+                     el.selectionEnd = endPos - 2
+                    }, 10)
+                 }else{
+                   this.content = startText + "**" + selectedText + "**" + endText
+                   setTimeout(function(){
+                    el.selectionStart = startPos + 2
+                    el.selectionEnd = endPos + 2
+                   }, 10)
+                 }
                break
              // 斜体
              case "italic":
