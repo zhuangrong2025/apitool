@@ -24,7 +24,7 @@
     <div class="tb-left">
       <div class="tb-format">
         <ul>
-          <li v-for="(item, index) in formats" @click="formatApply(item.name, index)">
+          <li v-for="(item, index) in formats" @click="formatApply(item.name, index)" @mousedown="formatPrevent">
             <i :class="['ad-format-' + item.name, item.isActive ? 'active' : '']" ></i>
           </li>
         </ul>
@@ -45,7 +45,7 @@
     <!-- //标题 -->
     <div class="ad-article">
       <div class="article-origin">
-        <textarea name="content" ref="txta" v-model="content"  class="art-area" placeholder="" @click="clickText"  @input="autoHeight" @select="selectText"></textarea>
+        <textarea name="content" ref="txta" v-model="content"  class="art-area" placeholder="" @mousedown="clickText" @blur="blurText"  @input="autoHeight" @select="selectText"></textarea>
       </div>
       <div class="article-marked">
         <!-- marked -->
@@ -142,13 +142,15 @@ var vm = new Vue({
     // 点击,没有选择文本
     clickText: function(evnet){
       var el = event.target
-      el.focus(); 
       this.selectedInfo.endPos = this.selectedInfo.startPos = el.selectionStart
+    },
+    // 失去焦点
+    blurText: function(evnet){
+      console.log("blurtext");
     },
     // 格式化文本-- 不需要保留状态
     formatApply: function(name, i){
       var el = $(".art-area")[0]
-      el.focus();
       if ('selectionStart' in el) {
          if (this.selectedInfo.startPos != this.selectedInfo.endPos) {
            // 插入格式符
@@ -184,6 +186,10 @@ var vm = new Vue({
 
       }
     },
+    formatPrevent: function(e){
+      e.preventDefault();
+      return false;
+    }
   }
 })
 </script>
