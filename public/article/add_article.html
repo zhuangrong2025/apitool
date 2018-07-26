@@ -45,7 +45,7 @@
     <!-- //标题 -->
     <div class="ad-article">
       <div class="article-origin">
-        <textarea name="content"  v-model="content"  class="art-area" placeholder=""  @input="autoHeight" @select="selectText"></textarea>
+        <textarea name="content" ref="txta" v-model="content"  class="art-area" placeholder="" @click="clickText"  @input="autoHeight" @select="selectText"></textarea>
       </div>
       <div class="article-marked">
         <!-- marked -->
@@ -81,6 +81,12 @@ var vm = new Vue({
       { name: "bold", isActive: false, character:"# " },
       { name: "italic", isActive: false, character:"_"  },
     ],
+    selectedInfo: {
+      val: "",
+      startPos: 0,
+      endPos: 0,
+      selectedText: ""
+    }
   },
   mounted:function() {
     var _this = this
@@ -124,40 +130,45 @@ var vm = new Vue({
       $el.css("height", "auto")
       $el.css("height", ($el[0].scrollHeight)+ "px")
     },
-    //选中的文字
+    // 选中的文字
     selectText: function(evnet){
       var el = event.target
+      this.selectedInfo.val = el.value
+      this.selectedInfo.startPos = el.selectionStart
+      this.selectedInfo.endPos = el.selectionEnd
+      this.selectedInfo.text = el.value.substring(el.selectionStart, el.selectionEnd)
+      console.log("selected");
+    },
+    // 点击,没有选择文本
+    clickText: function(evnet){
+      var el = event.target
+      el.focus(); 
+      this.selectedInfo.endPos = this.selectedInfo.startPos = el.selectionStart
     },
     // 格式化文本-- 不需要保留状态
     formatApply: function(name, i){
-      var el = $(".art-area")[0],
-          val = el.value,
-          startPos = el.selectionStart,
-          endPos = el.selectionEnd,
-          startText = val.substring(0, startPos),
-          endText = val.substring(endPos),
-          selectedText = el.value.substring(startPos, endPos)
-      if(!selectedText){
-        return
-      }
+      var el = $(".art-area")[0]
+      el.focus();
       if ('selectionStart' in el) {
-         if (startPos != endPos) {
+         if (this.selectedInfo.startPos != this.selectedInfo.endPos) {
            // 插入格式符
            switch(name) {
              // 粗体
              case "bold":
-                 if(val.substring(startPos - 2, startPos) == "**" && val.substring(endPos, endPos + 2) == "**"){
-                    this.content = val.substring(0, startPos - 2) + selectedText + val.substring(endPos + 2)
-                    setTimeout(function(){
-                     el.selectionStart = startPos - 2
-                     el.selectionEnd = endPos - 2
+                 // 取消加粗
+                 if(this.selectedInfo.val.substring(this.selectedInfo.startPos - 2, this.selectedInfo.startPos) == "**" && this.selectedInfo.val.substring(this.selectedInfo.endPos, this.selectedInfo.endPos + 2) == "**"){
+                    this.content = this.selectedInfo.val.substring(0, this.selectedInfo.startPos - 2) + this.selectedInfo.text + this.selectedInfo.val.substring(this.selectedInfo.endPos + 2)
+                    setTimeout(()=>{
+                      el.selectionStart = this.selectedInfo.startPos - 2
+                      el.selectionEnd = this.selectedInfo.endPos - 2
                     }, 10)
                  }else{
-                   this.content = startText + "**" + selectedText + "**" + endText
-                   setTimeout(function(){
-                    el.selectionStart = startPos + 2
-                    el.selectionEnd = endPos + 2
-                   }, 10)
+                 // 加粗
+                    this.content = this.selectedInfo.val.substring(0, this.selectedInfo.startPos) + "**" + this.selectedInfo.text + "**" + this.selectedInfo.val.substring(this.selectedInfo.endPos)
+                    setTimeout(()=>{
+                      el.selectionStart = this.selectedInfo.startPos + 2
+                      el.selectionEnd = this.selectedInfo.endPos + 2
+                    }, 10)
                  }
                break
              // 斜体
@@ -170,7 +181,7 @@ var vm = new Vue({
                break
            }
          }
-         el.focus();
+
       }
     },
   }
