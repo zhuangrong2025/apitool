@@ -45,7 +45,7 @@
     <!-- //标题 -->
     <div class="ad-article">
       <div class="article-origin">
-        <textarea name="content" ref="txta" v-model="content"  class="art-area" placeholder="" @mousedown="clickText" @blur="blurText"  @input="autoHeight" @select="selectText"></textarea>
+        <textarea name="content" ref="txta" v-model="content"  class="art-area" placeholder=""  @blur="blurText"  @input="autoHeight" ></textarea>
       </div>
       <div class="article-marked">
         <!-- marked -->
@@ -130,46 +130,39 @@ var vm = new Vue({
       $el.css("height", "auto")
       $el.css("height", ($el[0].scrollHeight)+ "px")
     },
-    // 选中的文字
-    selectText: function(evnet){
-      var el = event.target
-      this.selectedInfo.val = el.value
-      this.selectedInfo.startPos = el.selectionStart
-      this.selectedInfo.endPos = el.selectionEnd
-      this.selectedInfo.text = el.value.substring(el.selectionStart, el.selectionEnd)
-      console.log("selected");
-    },
-    // 点击,没有选择文本
-    clickText: function(evnet){
-      var el = event.target
-      this.selectedInfo.endPos = this.selectedInfo.startPos = el.selectionStart
-    },
     // 失去焦点
     blurText: function(evnet){
-      console.log("blurtext");
+      var el = event.target
+      el.selectionStart = el.selectionEnd
     },
     // 格式化文本-- 不需要保留状态
     formatApply: function(name, i){
-      var el = $(".art-area")[0]
+      var el = $(".art-area")[0],
+          startPos = el.selectionStart, // 这值不能存放在data中因为它是实时变化的，也不用select事件去获得
+          endPos = el.selectionEnd,
+          startText = el.value.substring(0, startPos),
+          endText = el.value.substring(endPos),
+          selectedText = el.value.substring(startPos, endPos)
+
       if ('selectionStart' in el) {
-         if (this.selectedInfo.startPos != this.selectedInfo.endPos) {
+         if (startPos != endPos) {
            // 插入格式符
            switch(name) {
              // 粗体
              case "bold":
                  // 取消加粗
-                 if(this.selectedInfo.val.substring(this.selectedInfo.startPos - 2, this.selectedInfo.startPos) == "**" && this.selectedInfo.val.substring(this.selectedInfo.endPos, this.selectedInfo.endPos + 2) == "**"){
-                    this.content = this.selectedInfo.val.substring(0, this.selectedInfo.startPos - 2) + this.selectedInfo.text + this.selectedInfo.val.substring(this.selectedInfo.endPos + 2)
+                 if(el.value.substring(startPos, startPos - 2) == "**" && el.value.substring(endPos, endPos + 2) == "**" ){
+                    this.content = el.value.substring(0, startPos - 2) + selectedText + el.value.substring(endPos + 2)
                     setTimeout(()=>{
-                      el.selectionStart = this.selectedInfo.startPos - 2
-                      el.selectionEnd = this.selectedInfo.endPos - 2
+                      el.selectionStart = startPos - 2
+                      el.selectionEnd = endPos - 2
                     }, 10)
                  }else{
                  // 加粗
-                    this.content = this.selectedInfo.val.substring(0, this.selectedInfo.startPos) + "**" + this.selectedInfo.text + "**" + this.selectedInfo.val.substring(this.selectedInfo.endPos)
+                    this.content = startText + "**" + selectedText + "**" + endText
                     setTimeout(()=>{
-                      el.selectionStart = this.selectedInfo.startPos + 2
-                      el.selectionEnd = this.selectedInfo.endPos + 2
+                      el.selectionStart = startPos + 2
+                      el.selectionEnd = endPos + 2
                     }, 10)
                  }
                break
@@ -187,6 +180,7 @@ var vm = new Vue({
       }
     },
     formatPrevent: function(e){
+      // 点击工具栏按钮阻止默认事件，textarea不失去焦点
       e.preventDefault();
       return false;
     }
