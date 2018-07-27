@@ -10,9 +10,8 @@
 <link rel="stylesheet" href="/stylesheets/apitool.css">
 <link rel="stylesheet" href="/stylesheets/marked.css">
 <script src="/javascripts/marked.min.js"></script>
+<script src="/javascripts/format.js"></script>
 <title></title>
-<script type="text/javascript">
-</script>
 </head>
 <body>
 <div id="apitool">
@@ -42,6 +41,7 @@
     <div class="ad-title">
       <input  name="title" v-model="title" type="text"  placeholder="">
     </div>
+
     <!-- //标题 -->
     <div class="ad-article">
       <div class="article-origin">
@@ -135,55 +135,36 @@ var vm = new Vue({
       var el = event.target
       el.selectionStart = el.selectionEnd
     },
-    // 格式化文本-- 不需要保留状态
+    // 格式化文本
     formatApply: function(name, i){
       var _this = this
       var el = $(".art-area")[0],
           val = el.value,
           startPos = el.selectionStart, // 这值不能存放在data中因为它是实时变化的，也不用select事件去获得
           endPos = el.selectionEnd,
-          startText = el.value.substring(0, startPos),
-          endText = el.value.substring(endPos),
-          selectedText = el.value.substring(startPos, endPos)
+          startText = val.substring(0, startPos),
+          endText = val.substring(endPos),
+          selectedText = val.substring(startPos, endPos)
 
-      // 应用格式函数--根据scope判断，插入的类型是包括，还是插入前面，或插入后面
-      var apllyWrap = function(character, scope){
-        var c_len = character.length
-        // 取消加粗
-        if(val.substring(startPos, startPos - c_len) == character && val.substring(endPos, endPos + c_len) == character ){
-           _this.content = val.substring(0, startPos - c_len) + selectedText + val.substring(endPos + c_len)
-           setTimeout(()=>{
-             el.selectionStart = startPos - c_len
-             el.selectionEnd = endPos - c_len
-           }, 10)
-        }else{
-        // 加粗
-           _this.content = startText + character + selectedText + character + endText
-           setTimeout(()=>{
-             el.selectionStart = startPos + c_len
-             el.selectionEnd = endPos + c_len
-           }, 10)
-        }
-      }
+      // 应用格式函数format
       if ('selectionStart' in el) {
          if (startPos != endPos) {
            // 插入格式符
            switch(name) {
              // 粗体
              case "bold":
-                 apllyWrap("**")
+                  _this.content = $.format.wraper(val, el, "**", startPos, endPos, startText, endText, selectedText)
                break
              // 斜体
              case "italic":
-                 apllyWrap("_")
+                 _this.content = $.format.wraper(val, el, "_", startPos, endPos, startText, endText, selectedText)
                break
            }
          }
-
       }
     },
     formatPrevent: function(e){
-      // 点击工具栏按钮阻止默认事件，textarea不失去焦点
+      // 点击工具栏按钮阻止默认事件，让textarea不失去焦点，避免选中文本闪动，效果不佳
       e.preventDefault();
       return false;
     }
