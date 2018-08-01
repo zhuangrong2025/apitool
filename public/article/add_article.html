@@ -23,8 +23,8 @@
     <div class="tb-left">
       <div class="tb-format">
         <ul>
-          <li v-for="(item, index) in formats" @click="formatApply(item.name, index)" @mousedown="formatPrevent">
-            <i :class="['ad-format-' + item.name, item.isActive ? 'active' : '']" ></i>
+          <li v-for="(item, index) in formats" @click="formatApply(item.name, item.character, item.presetText)" @mousedown="formatPrevent">
+            <i :class="['ad-format-' + item.name]" :title="item.title"   ></i>
           </li>
         </ul>
       </div>
@@ -78,8 +78,11 @@ var vm = new Vue({
     msg: "",
     success: false,
     formats: [
-      { name: "bold", isActive: false, character:"# " },
-      { name: "italic", isActive: false, character:"_"  },
+      { name: "bold", character:"**", presetText:"**粗体**", title:"粗体" },
+      { name: "italic", character:"_", presetText:"_斜体_", title:"斜体"  },
+      { name: "headline1", character:"# ", presetText:"# 标题1", title:"标题1"  },
+      { name: "headline2", character:"## ", presetText:"## 标题2", title:"标题2"  },
+      { name: "headline3", character:"### ", presetText:"### 标题3", title:"标题3"  },
     ],
     selectedInfo: {
       val: "",
@@ -136,7 +139,7 @@ var vm = new Vue({
       el.selectionStart = el.selectionEnd
     },
     // 格式化文本
-    formatApply: function(name, i){
+    formatApply: function(name, character, presetText){
       var _this = this
       var el = $(".art-area")[0],
           val = el.value,
@@ -153,11 +156,46 @@ var vm = new Vue({
            switch(name) {
              // 粗体
              case "bold":
-                  _this.content = $.format.wraper(val, el, "**", startPos, endPos, startText, endText, selectedText)
+                  _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
                break
              // 斜体
              case "italic":
-                 _this.content = $.format.wraper(val, el, "_", startPos, endPos, startText, endText, selectedText)
+                 _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
+               break
+             // 标题1
+             case "headline1":
+                 _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
+               break
+             // 标题2
+             case "headline2":
+                 _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
+               break
+             // 标题3
+             case "headline3":
+                 _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
+               break
+           }
+         }else{
+           switch(name) {
+             // 插入粗体
+             case "bold":
+                  _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
+               break
+             // 斜体
+             case "italic":
+                  _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
+               break
+             // 标题1
+             case "headline1":
+                  _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
+               break
+             // 标题2
+             case "headline2":
+                  _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
+               break
+             // 标题3
+             case "headline3":
+                  _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
                break
            }
          }
