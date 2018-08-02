@@ -85,6 +85,9 @@
 .marked-parse pre > code.language-js::before{
   content: 'JS';
 }
+.marked-parse pre > code.language-html::before{
+  content: 'HTML';
+}
  /* 段落 */
 .marked-parse p,
 .marked-parse ul,

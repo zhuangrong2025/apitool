@@ -19,7 +19,7 @@ body{
 	background-color: inherit;
 	border-radius: 8px;
 	background-clip: content-box;
-	border: 2px solid transparent
+	border: 2px solid transparent;
 }
 ::-webkit-scrollbar-track {
   background: #fff;
@@ -234,6 +234,19 @@ body{
   text-align: left;
   width: 24px;
 }
+/* 分割线 */
+.toolbar .tb-format li:nth-child(5)::before{
+  content: '';
+  display: block;
+  width: 1px;
+  height: 25px;
+  position: absolute;
+  top: 2px;
+  right: -10px;
+  background-color: rgb(229, 229, 229);
+  z-index:  999;
+}
+/* 字体图标 */
 [class*="ad-format-"]:before,
 [class^="ad-format-"]:before {
   font-family: fontello;
@@ -248,12 +261,26 @@ body{
 .ad-format-italic:before {
   content: "\E801";
 }
+.ad-format-table:before {
+  content: "\F0CE";
+  font-size: 16px;
+}
+.ad-format-code:before {
+  content: "\F121";
+  font-size: 16px;
+}
+.ad-format-linkto:before {
+  content: "\E803";
+  font-size: 14px;
+}
 .ad-format-headline3:before,
 .ad-format-headline2:before,
 .ad-format-headline1:before{
   content: "\F1DC";
 }
-
+.toolbar .tb-format li:nth-child(6) i{
+  margin-left: 12px;
+}
 /* 发布按钮 */
 .publish{
   display: block;

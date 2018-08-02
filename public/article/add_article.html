@@ -83,6 +83,9 @@ var vm = new Vue({
       { name: "headline1", character:"# ", presetText:"# 标题1", title:"标题1"  },
       { name: "headline2", character:"## ", presetText:"## 标题2", title:"标题2"  },
       { name: "headline3", character:"### ", presetText:"### 标题3", title:"标题3"  },
+      { name: "table", character:"", presetText:"\n| column1 | column2 | column3 |\n|-|-|-|\n| content1 | content2 | content3 |", title:"表格"  },
+      { name: "code", character:"", presetText:"``` html\n<div> html </div>\n```", title:"代码块"  },
+      { name: "linkto", character:"", presetText:"[ qq ]( http://www.qq.com )", title:"链接"  },
     ],
     selectedInfo: {
       val: "",
@@ -155,46 +158,14 @@ var vm = new Vue({
            // 插入格式符
            switch(name) {
              // 粗体
-             case "bold":
+             case "bold": case "italic": case "headline1": case "headline2": case "headline3":
                   _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
-               break
-             // 斜体
-             case "italic":
-                 _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
-               break
-             // 标题1
-             case "headline1":
-                 _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
-               break
-             // 标题2
-             case "headline2":
-                 _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
-               break
-             // 标题3
-             case "headline3":
-                 _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
                break
            }
          }else{
            switch(name) {
              // 插入粗体
-             case "bold":
-                  _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
-               break
-             // 斜体
-             case "italic":
-                  _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
-               break
-             // 标题1
-             case "headline1":
-                  _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
-               break
-             // 标题2
-             case "headline2":
-                  _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
-               break
-             // 标题3
-             case "headline3":
+             case "bold": case "italic": case "headline1": case "headline2": case "headline2": case "headline2": case "headline3": case "table": case "code": case "linkto":
                   _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
                break
            }
