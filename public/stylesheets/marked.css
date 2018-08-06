@@ -12,19 +12,20 @@
 .marked-parse h3,
 .marked-parse h4,
 .marked-parse strong {
-  font-weight: 600;
-  color: rgb(44, 62, 80);
+  font-weight: 500;
+  color: #0d1a26);
 }
 .marked-parse h1 {
   margin: 0 0 1em;
 }
-.marked-parse > h2 {
+.marked-parse h2 {
+  font-size: 24px !important;
   margin: 45px 0 0.8em;
   padding-bottom: 0.7em;
   border-bottom: 1px solid rgb(228, 228, 228);
 }
 /* 表格 */
-.marked-parse > table {
+.marked-parse table {
   border-spacing: 0;
   border-collapse: collapse;
   margin: 1.2em auto;
@@ -33,22 +34,22 @@
   overflow-x: auto;
   width: 100%;
 }
-.marked-parse > table td,
-.marked-parse > table th {
+.marked-parse table td,
+.marked-parse table th {
   line-height: 1.5em;
   padding: 0.4em 0.8em;
   border: none;
   border: 1px solid #ddd;
 }
-.marked-parse > table th {
+.marked-parse table th {
   font-weight: bold;
 }
-.marked-parse > table th,
-.marked-parse > table tr:nth-child(2n) {
+.marked-parse table th,
+.marked-parse table tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
-.marked-parse > table th code,
-.marked-parse > table tr:nth-child(2n) code {
+.marked-parse table th code,
+.marked-parse table tr:nth-child(2n) code {
   background-color: #efefef;
 }
 

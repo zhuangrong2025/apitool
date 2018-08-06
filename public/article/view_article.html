@@ -49,7 +49,10 @@
   <div class="ad-container view-warp" v-cloak>
     <div class="ad-article">
       <!-- <div class="view-content marked-parse" v-html="content"></div> -->
-      <div class="view-content marked-parse" id="jq"></div>
+      <div class="view-content marked-parse">
+        <div class="art-title">{{ title }}</div>
+        <div id="detail"></div>
+      </div>
     </div>
   </div>
   <!-- //编辑区 -->
@@ -77,7 +80,7 @@ var vm = new Vue({
 			success: function(res){
         _this.title = res.title
         // _this.content = marked(res.content)
-        $("#jq").html(marked(res.content));
+        $("#detail").html(marked(res.content))
 			}
 	  })
 
