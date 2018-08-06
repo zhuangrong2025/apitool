@@ -7,42 +7,42 @@ body{
 }
 /* 滚动条 */
 ::-webkit-scrollbar {
-	width: 8px;
-	height: 8px;
-	background-color: transparent;
-	border-radius: 8px;
+	width: 8px !important;
+	height: 8px !important;
+	background-color: transparent !important;
+	border-radius: 8px !important;
 }
 ::-webkit-scrollbar:hover {
-	background-color: #fff;
+	background-color: #fff !important;
 }
 ::-webkit-scrollbar-thumb{
-	background-color: inherit;
-	border-radius: 8px;
-	background-clip: content-box;
-	border: 2px solid transparent;
+	background-color: inherit !important;
+	border-radius: 8px !important;
+	background-clip: content-box !important;
+	border: 2px solid transparent !important;
 }
 ::-webkit-scrollbar-track {
-  background: #fff;
+  background: #fff !important;
 }
 ::-webkit-scrollbar-thumb:hover {
-	background-clip: content-box;
+	background-clip: content-box !important;
 }
 /* 鼠标滑过编辑区 */
 .view-warp,
 .article-origin,
 .article-marked{
-  -webkit-transition: background-color .5s linear;
-  background-color: rgb(255, 255, 255);
+  -webkit-transition: background-color .5s linear !important;
+  background-color: rgb(255, 255, 255) !important;
 }
 .view-warp:hover,
 .article-origin:hover,
 .article-marked:hover {
-  background-color: #cfcfcf;
+  background-color: #cfcfcf !important;
 }
 .article-marked .marked-parse{
-  background-color: #FFFFFF;
-  padding: 20px;
-  min-height: 100%;
+  background-color: #FFFFFF !important;
+  padding: 20px !important;
+  min-height: 100% !important;
 }
 /* 头部 */
 .header{
@@ -381,6 +381,7 @@ body{
   margin: 0;
   vertical-align: top;
   min-height: 100%;
+  box-sizing: border-box;
 }
 .ad-list {
   min-height: 800px;

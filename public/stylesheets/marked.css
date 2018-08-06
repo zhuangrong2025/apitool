@@ -29,7 +29,7 @@
   border-collapse: collapse;
   margin: 1.2em auto;
   padding: 0;
-  display: block;  /* 使width不能100%，在特殊情况比较有用*/
+  /*display: block;   使width不能100%，在特殊情况比较有用*/
   overflow-x: auto;
   width: 100%;
 }

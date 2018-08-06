@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="/stylesheets/marked.css">
 <script src="/javascripts/marked.min.js"></script>
 <script src="/javascripts/format.js"></script>
+<!-- uilite -->
+<link rel="stylesheet" href="http://10.168.2.110:8080/uilite_docs/assets/css/uilite.css">
+<script type="text/javascript" src="http://10.168.2.110:8080/uilite_docs/assets/js/uilite.js"></script>
 <title></title>
 </head>
 <body>
@@ -41,7 +44,6 @@
     <div class="ad-title">
       <input  name="title" v-model="title" type="text"  placeholder="">
     </div>
-
     <!-- //标题 -->
     <div class="ad-article">
       <div class="article-origin">
@@ -49,7 +51,7 @@
       </div>
       <div class="article-marked">
         <!-- marked -->
-        <div class="marked-parse" id="marked-content" v-html="markedContent">
+        <div class="marked-parse" id="marked-content" v-markparse="markedContent">
 
         </div>
         <!-- //marked -->
@@ -63,7 +65,6 @@
   </div>
   <!-- //保存提示 -->
 </div>
-
 <script src="/javascripts/header.js"></script>
 <script type="text/javascript">
 // vue
@@ -71,6 +72,31 @@ var vm = new Vue({
   el: '#apitool',
   components: {
     headerComp: HeaderComp
+  },
+  directives:{
+    markparse:{ // 显示编译后的内容
+      bind:function (el,binding) {
+        el.innerHTML= binding.value
+      },
+      update:function (el,binding) {
+        el.innerHTML= binding.value
+
+        var reg = /<script[^>]+>(?:(?!<\/script>)[\s\S])*<\/script>/gi;
+        var scripts = binding.value.match(reg);
+        if(scripts){
+          scripts.forEach(function(item){
+            var code = item.substring(item.indexOf(">")+1, item.lastIndexOf("<"))
+            var doc = doc || document;
+            var script = doc.createElement( "script" );
+            script.text = code;
+            doc.head.appendChild(script).parentNode.removeChild(script);
+
+          })
+        }
+        // 忽略浏览器因为js语法错误而报错
+        window.onerror=function(){return true}
+      }
+    }
   },
   data: {
     title: "文章标题",

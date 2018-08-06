@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="/stylesheets/apitool.css">
 <link rel="stylesheet" href="/stylesheets/marked.css">
 <script src="/javascripts/marked.min.js"></script>
+<!-- uilite -->
+<link rel="stylesheet" href="http://10.168.2.110:8080/uilite_docs/assets/css/uilite.css">
+<script type="text/javascript" src="http://10.168.2.110:8080/uilite_docs/assets/js/uilite.js"></script>
 <title></title>
 <script>
 //获取url参数--封装
@@ -45,7 +48,8 @@
   <!-- 编辑区 -->
   <div class="ad-container view-warp" v-cloak>
     <div class="ad-article">
-      <div class="view-content marked-parse" v-html="content"></div>
+      <!-- <div class="view-content marked-parse" v-html="content"></div> -->
+      <div class="view-content marked-parse" id="jq"></div>
     </div>
   </div>
   <!-- //编辑区 -->
@@ -72,7 +76,8 @@ var vm = new Vue({
 			dataType: "json",
 			success: function(res){
         _this.title = res.title
-        _this.content = marked(res.content)
+        // _this.content = marked(res.content)
+        $("#jq").html(marked(res.content));
 			}
 	  })
 
