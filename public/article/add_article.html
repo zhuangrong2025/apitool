@@ -112,13 +112,8 @@ var vm = new Vue({
       { name: "table", character:"", presetText:"\n| column1 | column2 | column3 |\n|-|-|-|\n| content1 | content2 | content3 |", title:"表格"  },
       { name: "code", character:"", presetText:"``` html\n<div> html </div>\n```", title:"代码块"  },
       { name: "linkto", character:"", presetText:"[ qq ]( http://www.qq.com )", title:"链接"  },
-    ],
-    selectedInfo: {
-      val: "",
-      startPos: 0,
-      endPos: 0,
-      selectedText: ""
-    }
+      { name: "listol", character:"", presetText:"- a", title:"序列"  },
+    ]
   },
   mounted:function() {
     var _this = this
@@ -151,7 +146,6 @@ var vm = new Vue({
           setTimeout(function(){
             window.location.href = "/article/list_article.html"
           },1000)
-
   			}
   		})
     },
@@ -181,17 +175,16 @@ var vm = new Vue({
       // 应用格式函数format
       if ('selectionStart' in el) {
          if (startPos != endPos) {
-           // 插入格式符
            switch(name) {
-             // 粗体
+             // wraper
              case "bold": case "italic": case "headline1": case "headline2": case "headline3":
                   _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
                break
            }
          }else{
            switch(name) {
-             // 插入粗体
-             case "bold": case "italic": case "headline1": case "headline2": case "headline2": case "headline2": case "headline3": case "table": case "code": case "linkto":
+             // insert
+             case "bold": case "italic": case "headline1": case "headline2": case "headline2": case "headline2": case "headline3": case "table": case "code": case "linkto": case "listol":
                   _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
                break
            }

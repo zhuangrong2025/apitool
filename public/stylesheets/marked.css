@@ -3,9 +3,6 @@
 .marked-parse{
   font-size: 14px;
 }
-.marked-parse li{
-  list-style-type: disc !important;
-}
 /* 标题 */
 .marked-parse h1,
 .marked-parse h2,
@@ -48,10 +45,7 @@
 .marked-parse table tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
-.marked-parse table th code,
-.marked-parse table tr:nth-child(2n) code {
-  background-color: #efefef;
-}
+
 
 /* 代码块 */
 .markdown-parse pre {
@@ -94,7 +88,7 @@
 .marked-parse ul,
 .marked-parse ol {
   line-height: 1.6em;
-  margin: 1.2em 0 -1.2em;
+  margin: 0 0 -1.2em;
   padding-bottom: 1.2em;
   position: relative;
   z-index: 1;
@@ -104,7 +98,31 @@
 }
 
 /* 链接 */
-.marked-parse a {
+.marked-parse a{
   color: rgb(32, 123, 208);
   font-weight: 600;
+}
+
+/* 序列 */
+.marked-parse ul,
+.marked-parse ol{
+  padding-left: 2em;
+}
+.marked-parse ol li{
+  list-style-type: decimal !important;
+}
+.marked-parse ul li{
+  list-style-type: disc !important;
+}
+
+/* code 部分文字加亮 */
+.marked-parse code {
+  padding: .2em .3em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #F8F8F8;
+  border-radius: 3px;
+  border: 1px solid  #ddd;
+  box-sizing: border-box;
+  /* padding: 0 3px; */
 }

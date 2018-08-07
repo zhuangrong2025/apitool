@@ -273,6 +273,9 @@ body{
   content: "\E803";
   font-size: 14px;
 }
+.ad-format-listol:before {
+  content: "\F0CB";
+}
 .ad-format-headline3:before,
 .ad-format-headline2:before,
 .ad-format-headline1:before{
@@ -615,11 +618,11 @@ body{
 }
 .view-warp .ad-article{
   min-height: 100% !important;
-  height:  auto;
+  height: auto;
 }
 .art-title{
   padding: 20px 0 30px;
-  font-size: 29px;
+  font-size: 28px;
   font-weight: 500 !important;
-  font-family: Lato, "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+  font-family: Lato, "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }

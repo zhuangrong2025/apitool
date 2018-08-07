@@ -181,6 +181,7 @@ Desktop.ini
 
 
 *.rar
+*.zip
 
 
 **/node_modules/
