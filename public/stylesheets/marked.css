@@ -7,10 +7,9 @@
 .marked-parse h1,
 .marked-parse h2,
 .marked-parse h3,
-.marked-parse h4,
-.marked-parse strong {
+.marked-parse h4{
   font-weight: 500;
-  color: #0d1a26);
+  color: #0d1a26;
 }
 .marked-parse h1 {
   margin: 0 0 1em;
@@ -116,7 +115,7 @@
 }
 
 /* code 部分文字加亮 */
-.marked-parse code {
+.marked-parse code:not([class]){
   padding: .2em .3em;
   margin: 0;
   font-size: 85%;
