@@ -82,7 +82,7 @@
 .marked-parse pre > code.language-html::before{
   content: 'HTML';
 }
- /* 段落 */
+ /* 回车换行 一次回车生成<br>，两次回车<p> */
 .marked-parse p,
 .marked-parse ul,
 .marked-parse ol {
@@ -94,6 +94,7 @@
 }
 .marked-parse p {
   word-spacing: 0.05em;
+  margin-top: 1.2em;
 }
 
 /* 链接 */

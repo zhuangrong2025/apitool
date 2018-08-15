@@ -32,7 +32,7 @@
     var c_len = character.length
     content =  startText + presetText + endText
     setTimeout(()=>{
-      if( character == "**" || character == "_"){
+      if( character == "**" || character == "_" || character == "~~" || character == "++"){
         el.setSelectionRange(startPos + c_len, startPos + (pre_len - c_len))
       }else{
         el.setSelectionRange(startPos + c_len, startPos + pre_len)

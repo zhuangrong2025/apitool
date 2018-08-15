@@ -157,10 +157,12 @@ body{
   z-index: 99;
 }
 .toolbar .tb-left{
+  padding-right: 10px;
+}
+.toolbar .tb-middle{
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  padding-right: 10px;
 }
 .toolbar .tb-right{
 
@@ -260,6 +262,12 @@ body{
 }
 .ad-format-italic:before {
   content: "\E801";
+}
+.ad-format-underline:before {
+  content: "\F0CD";
+}
+.ad-format-strikethrough:before {
+  content: "\F0CC";
 }
 .ad-format-table:before {
   content: "\F0CE";
@@ -369,7 +377,7 @@ body{
   margin:  0;
 }
 .article-marked{
-  border-left: 1px solid #ddd;
+  border-left: 8px solid rgb(240, 242, 245);
 }
 .art-area {
   background-color: #fff;

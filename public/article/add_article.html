@@ -32,6 +32,9 @@
         </ul>
       </div>
     </div>
+    <div class="tb-middle">
+      <!-- <i style="display:inline-block;width:18px;height:18px;color:#666;border:1px solid #ddd;border-radius:50%; font-style:normal;text-align:center" title="帮助">?</i> -->
+    </div>
     <div class="tb-right">
       <a href="javascript:;" class="publish" @click="publish">发布</a>
     </div>
@@ -106,6 +109,8 @@ var vm = new Vue({
     formats: [
       { name: "bold", character:"**", presetText:"**粗体**", title:"粗体" },
       { name: "italic", character:"_", presetText:"_斜体_", title:"斜体"  },
+      { name: "underline", character:"++", presetText:"++下划++", title:"下划线" },
+      { name: "strikethrough", character:"~~", presetText:"~~中划线~~", title:"中划线" },
       { name: "headline1", character:"# ", presetText:"# 标题1", title:"标题1"  },
       { name: "headline2", character:"## ", presetText:"## 标题2", title:"标题2"  },
       { name: "headline3", character:"### ", presetText:"### 标题3", title:"标题3"  },
@@ -183,14 +188,14 @@ var vm = new Vue({
          if (startPos != endPos) {
            switch(name) {
              // wraper
-             case "bold": case "italic": case "headline1": case "headline2": case "headline3":
+             case "bold": case "italic": case "underline": case "strikethrough": case "headline1": case "headline2": case "headline3":
                   _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
                break
            }
          }else{
            switch(name) {
              // insert
-             case "bold": case "italic": case "headline1": case "headline2": case "headline2": case "headline2": case "headline3": case "table": case "code": case "linkto": case "listol":
+             case "bold": case "italic": case "underline": case "strikethrough": case "headline1": case "headline2": case "headline3": case "table": case "code": case "linkto": case "listol":
                   _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
                break
            }
