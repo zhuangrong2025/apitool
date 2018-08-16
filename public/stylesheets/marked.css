@@ -3,6 +3,14 @@
 .marked-parse{
   font-size: 14px;
 }
+.marked-parse strong > em,
+.marked-parse em > strong,
+.marked-parse b > i,
+.marked-parse i > b {
+  font-style:normal;
+  font-weight:normal;
+  text-decoration:underline;
+}
 /* 标题 */
 .marked-parse h1,
 .marked-parse h2,

@@ -207,8 +207,8 @@ body{
   background: #e8e8e8;
 }
 .toolbar .tb-format li:nth-child(5)::after,
-.toolbar .tb-format li:nth-child(4)::after,
-.toolbar .tb-format li:nth-child(3)::after{
+.toolbar .tb-format li:nth-child(6)::after,
+.toolbar .tb-format li:nth-child(7)::after{
   display: block;
   width: 5px;
   height: 10px;
@@ -219,25 +219,25 @@ body{
   font-size:  12px;
   color:  #757575;
 }
-.toolbar .tb-format li:nth-child(3)::after{
+.toolbar .tb-format li:nth-child(5)::after{
   content: '1';
 }
-.toolbar .tb-format li:nth-child(4)::after{
+.toolbar .tb-format li:nth-child(6)::after{
   content: '2';
 }
-.toolbar .tb-format li:nth-child(5)::after{
+.toolbar .tb-format li:nth-child(7)::after{
   content: '3';
 }
 .toolbar .tb-format li:nth-child(5) i,
-.toolbar .tb-format li:nth-child(3) i,
-.toolbar .tb-format li:nth-child(4) i{
+.toolbar .tb-format li:nth-child(6) i,
+.toolbar .tb-format li:nth-child(7) i{
   margin-left: 5px;
   padding-left: 4px;
   text-align: left;
   width: 24px;
 }
 /* 分割线 */
-.toolbar .tb-format li:nth-child(5)::before{
+.toolbar .tb-format li:nth-child(7)::before{
   content: '';
   display: block;
   width: 1px;
@@ -247,6 +247,9 @@ body{
   right: -10px;
   background-color: rgb(229, 229, 229);
   z-index:  999;
+}
+.toolbar .tb-format li:nth-child(8) i{
+  margin-left: 12px;
 }
 /* 字体图标 */
 [class*="ad-format-"]:before,
@@ -289,9 +292,7 @@ body{
 .ad-format-headline1:before{
   content: "\F1DC";
 }
-.toolbar .tb-format li:nth-child(6) i{
-  margin-left: 12px;
-}
+
 /* 发布按钮 */
 .publish{
   display: block;
