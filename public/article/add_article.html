@@ -115,8 +115,8 @@ var vm = new Vue({
       { name: "headline2", character:"## ", presetText:"## 标题2", title:"标题2"  },
       { name: "headline3", character:"### ", presetText:"### 标题3", title:"标题3"  },
       { name: "table", character:"", presetText:"\n| column1 | column2 | column3 |\n|-|-|-|\n| content1 | content2 | content3 |", title:"表格"  },
-      { name: "code", character:"", presetText:"``` html\n<div> html </div>\n```", title:"代码块"  },
-      { name: "linkto", character:"", presetText:"[ qq ]( http://www.qq.com )", title:"链接"  },
+      { name: "code", character:"", presetText:"``` html\n<div> this is code </div>\n```", title:"代码块"  },
+      { name: "linkto", character:"", presetText:"[qq](http://www.qq.com)", title:"链接"  },
       { name: "listol", character:"", presetText:"- a", title:"序列"  },
     ]
   },
@@ -189,8 +189,11 @@ var vm = new Vue({
            switch(name) {
              // wraper
              case "bold": case "italic": case "underline": case "strikethrough": case "headline1": case "headline2": case "headline3":
-                  _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
-               break
+                 _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
+                break
+             case "linkto":
+                  _this.content = $.format.replace(val, el, character, startPos, endPos, startText, endText, selectedText)
+                break
            }
          }else{
            switch(name) {
