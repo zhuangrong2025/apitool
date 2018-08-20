@@ -359,7 +359,7 @@ body{
 }
 .ad-article{
   background-color: rgb(255, 255, 255);
-  padding: 0 40px 30px;
+  padding: 0 40px 10px;
   font-size: 16px;
   display: -webkit-flex;
   display: -ms-flex;
