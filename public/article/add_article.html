@@ -83,7 +83,7 @@ var vm = new Vue({
       },
       update:function (el,binding) {
         el.innerHTML= binding.value
-
+        // 执行脚本在head中添加，执行后删除script
         var reg = /<script[^>]+>(?:(?!<\/script>)[\s\S])*<\/script>/gi;
         var scripts = binding.value.match(reg);
         if(scripts){
@@ -93,7 +93,6 @@ var vm = new Vue({
             var script = doc.createElement( "script" );
             script.text = code;
             doc.head.appendChild(script).parentNode.removeChild(script);
-
           })
         }
         // 忽略浏览器因为js语法错误而报错
@@ -218,14 +217,15 @@ var vm = new Vue({
           endPos = el.selectionEnd,
           startText = val.substring(0, startPos),
           endText = val.substring(endPos)
-
-      // textarea value转换字符后的的值
-      var newStartText = startText.replace(/\n/g, '<br>')
-      var brSplit = newStartText.split("<br>")
-      var brLen = brSplit.length - 1
-      // 用<br>分割光标前的字符，数组最后一个，如果包含"_ "，则回车下一行添加"_ "
-      if(brSplit[brLen - 1].indexOf("- ") == 0){
-        if(brSplit[brLen - 1].length != 2){
+      var newStartText = startText.replace(/\n/g, '<br>'),  // textarea value转换字符后的的值
+          startTtextSplit = newStartText.split("<br>"),
+          newEndText = endText.replace(/\n/g, '<br>'),
+          endTextSplit = newEndText.split("<br>"),
+          brLen = startTtextSplit.length - 1
+      // 判断有序无序列表，回车自动添加相应的字符
+      if(startTtextSplit[brLen - 1].indexOf("- ") == 0){
+        // 无序列表
+        if(startTtextSplit[brLen - 1].length != 2){
           _this.content = startText + "- " + endText
           setTimeout(()=>{
             el.selectionStart = startPos + 2
@@ -238,7 +238,61 @@ var vm = new Vue({
             el.selectionEnd = endPos
           }, 10)
         }
+      }else{
+
+        // 有序列表
+        // 获取回车前的序列，分割成数组，获取光标序列个数，然后+1得到下一行的序号
+        var stLen = 0
+        var arrStart = []
+        var arrStartLen = 0
+        startTtextSplit.forEach(function(item,index){
+          if(item.indexOf(". ") >= 0){
+            if(item.substr(0,2) == "1."){
+              stLen = index
+            }
+          }
+        })
+        for( var i=stLen; i<brLen; i++){
+          arrStart.push(startTtextSplit[i])
+        }
+        arrStartLen = arrStart.length + 1 //下一行的序号
+        if(startTtextSplit[brLen - 1].indexOf(". ") >= 0){  // 如果光标前的有包含". "
+          // 获取回车前的序列，用两个<br>获取后面的序列，然后修改序列的顺序
+          var afterList = newEndText.split("<br><br>")[0].split("<br>")
+          var newAfterList = []
+          var afterListChar = ''
+          console.log(afterList);
+          for(var i=1; i<=afterList.length-1;i++){
+            // 如果li中有<br>,那边第一个字符会被替换为NaN，如果不是数字，不转化整数
+              var order
+              if(afterList[i].indexOf(". ") < 0){
+                console.log("字母");
+                order = afterList[i]
+              }else{
+                console.log("数字");
+                order = (parseInt(afterList[i].substring(0,1)) + 1).toString()
+              }
+              newAfterList.push(order + afterList[i].substring(1))
+          }
+          for(var j=0; j<newAfterList.length;j++){
+            afterListChar += "\n" + newAfterList[j]
+          }
+          var endTextSlice = endText.substring(newEndText.split("<br><br>")[0].length - (newAfterList.length * 3))
+
+          // 组合新的序列
+          _this.content = startText + arrStartLen.toString() + ". " + afterListChar + endTextSlice
+          setTimeout(()=>{
+            el.selectionStart = startPos + 3
+            el.selectionEnd = endPos + 3
+          }, 10)
+
+          //console.log(afterListChar);
+          //console.log("**********************");
+          //console.log(newEndText);
+        }
       }
+
+
     }
   }
 })

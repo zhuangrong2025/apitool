@@ -1,5 +1,4 @@
 (function($){
-	// 获取url参数
 	$.format = function(){
 
 	}
