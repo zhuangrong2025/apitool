@@ -232,6 +232,7 @@ var vm = new Vue({
             el.selectionEnd = endPos + 2
           }, 10)
         }else{
+          // 最后一行按两次回车结束序列
           _this.content = startText.substring(0, startText.length - 3) + "\n" + endText
           setTimeout(()=>{
             el.selectionStart = startPos
@@ -261,24 +262,21 @@ var vm = new Vue({
           var afterList = newEndText.split("<br><br>")[0].split("<br>")
           var newAfterList = []
           var afterListChar = ''
-          console.log(afterList);
           for(var i=1; i<=afterList.length-1;i++){
-            // 如果li中有<br>,那边第一个字符会被替换为NaN，如果不是数字，不转化整数
               var order
-              if(afterList[i].indexOf(". ") < 0){
-                console.log("字母");
-                order = afterList[i]
+              if(afterList[i].indexOf(". ") < 0){ // 如果数组中没有". ",则不转化为数字序号
+                order = ""
+                newAfterList.push(order + afterList[i].substring(0))
               }else{
-                console.log("数字");
-                order = (parseInt(afterList[i].substring(0,1)) + 1).toString()
+                order = (parseInt(afterList[i].substring(0,1)) + 1).toString() // 后半段序号加1
+                newAfterList.push(order + afterList[i].substring(1))
               }
-              newAfterList.push(order + afterList[i].substring(1))
           }
           for(var j=0; j<newAfterList.length;j++){
             afterListChar += "\n" + newAfterList[j]
           }
+          // 新的后半段内容截断，起始位置是后半段序列字符个数减去<br>的4个字符数乘以个数
           var endTextSlice = endText.substring(newEndText.split("<br><br>")[0].length - (newAfterList.length * 3))
-
           // 组合新的序列
           _this.content = startText + arrStartLen.toString() + ". " + afterListChar + endTextSlice
           setTimeout(()=>{
@@ -286,9 +284,6 @@ var vm = new Vue({
             el.selectionEnd = endPos + 3
           }, 10)
 
-          //console.log(afterListChar);
-          //console.log("**********************");
-          //console.log(newEndText);
         }
       }
 
