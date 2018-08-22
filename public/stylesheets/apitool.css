@@ -237,6 +237,7 @@ body{
   width: 24px;
 }
 /* 分割线 */
+.toolbar .tb-format li:nth-child(11)::before,
 .toolbar .tb-format li:nth-child(7)::before{
   content: '';
   display: block;
@@ -248,6 +249,7 @@ body{
   background-color: rgb(229, 229, 229);
   z-index:  999;
 }
+.toolbar .tb-format li:nth-child(12) i,
 .toolbar .tb-format li:nth-child(8) i{
   margin-left: 12px;
 }
@@ -284,6 +286,9 @@ body{
   content: "\E803";
   font-size: 14px;
 }
+.ad-format-listul:before {
+  content: "\F0CA";
+}
 .ad-format-listol:before {
   content: "\F0CB";
 }
@@ -292,7 +297,12 @@ body{
 .ad-format-headline1:before{
   content: "\F1DC";
 }
-
+.ad-format-picture:before {
+  content: "\E804";
+}
+.ad-format-quote:before {
+  content: "\F10D";
+}
 /* 发布按钮 */
 .publish{
   display: block;
@@ -504,18 +514,18 @@ body{
 /* 操作提示层 */
 .ad-alert{
   position: absolute;
-  top: 147px;
+  top: 150px;
   left: 50%;
   border-radius: 0;
-  background-color: rgba(102, 181, 80, 1);
+  background-color: rgba(153, 205, 0, .8);
   color: #fff;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
   min-width: 125px;
   padding: 4px 20px;
-  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .1);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, .1);
+  /* -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .1);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .1); */
   font-weight:  bold;
 }
 /* 对话框 */
@@ -630,7 +640,7 @@ body{
   height: auto;
 }
 .art-title{
-  padding: 20px 0 30px;
+  padding: 20px 0 0;
   font-size: 28px;
   font-weight: 500 !important;
   font-family: Lato, "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

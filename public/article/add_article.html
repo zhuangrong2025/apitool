@@ -117,7 +117,10 @@ var vm = new Vue({
       { name: "table", character:"", presetText:"\n| column1 | column2 | column3 |\n|-|-|-|\n| content1 | content2 | content3 |", title:"表格"  },
       { name: "code", character:"", presetText:"\n``` html\n<div> this is code </div>\n```", title:"代码块"  },
       { name: "linkto", character:"", presetText:"[qq](http://www.qq.com)", title:"链接"  },
-      { name: "listol", character:"", presetText:"- a", title:"序列"  },
+      { name: "picture", character:"", presetText:"", title:"插入图片" },
+      { name: "listul", character:"", presetText:"- a", title:"无序列表"  },
+      { name: "listol", character:"", presetText:"1. a", title:"有序列表"  },
+      { name: "quote", character:"", presetText:"> 引用", title:"引用说明"  },
     ]
   },
   mounted:function() {
@@ -198,7 +201,7 @@ var vm = new Vue({
          }else{
            switch(name) {
              // insert
-             case "bold": case "italic": case "underline": case "strikethrough": case "headline1": case "headline2": case "headline3": case "table": case "code": case "linkto": case "listol":
+             case "bold": case "italic": case "underline": case "strikethrough": case "headline1": case "headline2": case "headline3": case "table": case "code": case "linkto": case "listul": case "listol": case "quote":
                   _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
                break
            }

@@ -2,6 +2,7 @@
 
 .marked-parse{
   font-size: 14px;
+  color: #314659;
 }
 .marked-parse strong > em,
 .marked-parse em > strong,
@@ -14,19 +15,22 @@
 /* 标题 */
 .marked-parse h1,
 .marked-parse h2,
-.marked-parse h3,
-.marked-parse h4{
+.marked-parse h3{
   font-weight: 500;
   color: #0d1a26;
+  clear: both;
+  margin: 1.6em 0 0.6em;
 }
 .marked-parse h1 {
-  margin: 0 0 1em;
+  margin: 0 0 .6em;
+  font-size: 30px;
+  line-height: 32px;
 }
 .marked-parse h2 {
   font-size: 24px !important;
-  margin: 35px 0 0.8em;
-  padding-bottom: 0.7em;
-  border-bottom: 1px solid rgb(228, 228, 228);
+}
+.marked-parse h3{
+  font-size: 18px !important;
 }
 /* 表格 */
 .marked-parse table {
@@ -74,7 +78,7 @@
 }
 .marked-parse pre > code::before {
   position: absolute;
-  top: 0px;
+  top: 5px;
   right: 0px;
   color: rgb(204, 204, 204);
   text-align: right;
@@ -90,19 +94,13 @@
 .marked-parse pre > code.language-html::before{
   content: 'HTML';
 }
- /* 回车换行 一次回车生成<br>，两次回车<p> */
-.marked-parse p,
-.marked-parse ul,
-.marked-parse ol {
-  line-height: 1.6em;
-  margin: 0 0 -1.2em;
-  padding-bottom: 1.2em;
+ /* 段落：回车换行 一次回车生成<br>，两次回车<p> */
+.marked-parse p {
+  line-height: 2em;
+  word-spacing: 0.05em;
+  margin: 1.2em 0;
   position: relative;
   z-index: 1;
-}
-.marked-parse p {
-  word-spacing: 0.05em;
-  margin-top: 1.2em;
 }
 
 /* 链接 */
@@ -113,23 +111,86 @@
 /* 序列 */
 .marked-parse ul,
 .marked-parse ol{
-  padding-left: 2em;
+  line-height: 1.6em;
+  position: relative;
+  z-index: 1;
 }
 .marked-parse ol li{
   list-style-type: decimal !important;
 }
 .marked-parse ul li{
-  list-style-type: disc !important;
+  margin-left: 20px;
+  padding: 4px 3px;
+  list-style-type: circle !important;
+}
+
+/* 引用 */
+.marked-parse blockquote{
+  font-size: 90%;
+  color: #697b8c;
+  border-left: 4px solid #ebedf0;
+  padding-left: 0.8em;
+  margin: 1em 0;
+  background-color: #fff;
+}
+.marked-parse blockquote > P{
+  margin: 0;
+  padding: 0;
 }
 
 /* code 部分文字加亮 */
 .marked-parse code:not([class]){
-  padding: .2em .3em;
-  margin: 0;
-  font-size: 85%;
-  background-color: #F8F8F8;
+  margin: 0 1px;
+  background: #f2f4f5;
+  padding: .2em .4em;
   border-radius: 3px;
-  border: 1px solid  #ddd;
+  font-size: .9em;
+  border: 1px solid #eee;
   box-sizing: border-box;
-  /* padding: 0 3px; */
+}
+
+
+
+
+/*
+ * ant-design 代码和演示组合效果
+*/
+/* demo */
+.marked-parse .demo{
+  background-color: #fff;
+  border: 1px solid #EBEDF0;
+  border-radius: 2px;
+  padding: 40px 25px;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow-x: auto;
+  position: relative;
+}
+.marked-parse .demo i.show-code{
+  position: absolute;
+  bottom: 10px;
+  right: 13px;
+  width: 30px;
+  height: 20px;
+  display: block;
+  background-image: url(../images/show-code.svg);
+  background-size: 60%;
+  cursor: pointer;
+}
+.marked-parse .demo i.show-code:hover{
+  background-image: url(../images/show-code-active.svg);
+}
+/* demo 后的code标签 */
+.marked-parse .demo + pre code{
+  margin-top: -1.5em;
+  border: 1px solid  #EBEDF0;
+  border-top: 1px dashed #EBEDF0;
+  background-color: #fff;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 16px 32px;
 }
