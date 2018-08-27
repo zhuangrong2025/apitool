@@ -12,10 +12,11 @@
 <script src="/javascripts/marked.min.js"></script>
 <script src="/javascripts/format.js"></script>
 <script src="/javascripts/smart-list.js"></script>
-<!-- uilite 在新增页面选择框架js和css文件 -->
-<link rel="stylesheet" href="http://10.168.2.110:8080/uilite_docs/assets/css/uilite.css">
-<script type="text/javascript" src="http://10.168.2.110:8080/uilite_docs/assets/js/uilite.js"></script>
+<!-- shine-ui 在新增页面选择框架js和css文件 -->
+<link rel="stylesheet" href="/vendor/shine-ui/shine-ui.min.css">
+<script type="text/javascript" src="/vendor/shine-ui/shine-ui.min.js"></script>
 <title></title>
+
 </head>
 <body>
 <div id="apitool">
@@ -51,6 +52,11 @@
     <!-- //标题 -->
     <div class="ad-article">
       <div class="article-origin">
+        <div class="linenumber">
+          <ul>
+            <li v-for="n in linenumber">{{n}}</li>
+          </ul>
+        </div>
         <textarea name="content" ref="txta" v-model="content"  class="art-area" placeholder=""  @blur="blurText"  @input="autoHeight" @keyup.enter="smartList" ></textarea>
       </div>
       <div class="article-marked">
@@ -98,6 +104,13 @@ var vm = new Vue({
         }
         // 忽略浏览器因为js语法错误而报错
         window.onerror=function(){return true}
+
+        // show code,点击显示代码，需要加在这个
+        $(".show-code").parent().next("pre").hide()
+        $(".show-code").on("click",function(){
+          $(this).parent().next("pre").toggle()
+          $(this).toggleClass("active")
+        })
       }
     }
   },
@@ -121,7 +134,8 @@ var vm = new Vue({
       { name: "listul", character:"", presetText:"- a", title:"无序列表"  },
       { name: "listol", character:"", presetText:"1. a", title:"有序列表"  },
       { name: "quote", character:"", presetText:"> 引用", title:"引用说明"  },
-    ]
+    ],
+    linenumber: 1
   },
   mounted:function() {
     var _this = this
@@ -169,6 +183,10 @@ var vm = new Vue({
       var $el = $(event.target)
       $el.css("height", "auto")
       $el.css("height", ($el[0].scrollHeight)+ "px")
+      // 按回车确定br的个数，算错行数
+      var allTextSplit = $el[0].value.replace(/\n/g, '<br>').split("<br>")
+      _this.linenumber = allTextSplit.length
+      $el.prev().css("height",$el.css("height"))
     },
     // 失去焦点
     blurText: function(evnet){
@@ -233,6 +251,8 @@ var vm = new Vue({
       if(startTtextSplit[brLen - 1].substring(1,3).indexOf(". ") >= 0){ // 如果光标前的有包含". "
         _this.content = $.smartList.unordered(el, startPos, endPos, startText, endText, startTtextSplit, brLen, newEndText)
       }
+
+
     }
   }
 })

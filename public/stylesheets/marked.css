@@ -115,13 +115,14 @@
   position: relative;
   z-index: 1;
 }
-.marked-parse ol li{
-  list-style-type: decimal !important;
-}
+.marked-parse ol li,
 .marked-parse ul li{
   margin-left: 20px;
   padding: 4px 3px;
   list-style-type: circle !important;
+}
+.marked-parse ol li{
+  list-style-type: decimal !important;
 }
 
 /* 引用 */
@@ -178,11 +179,15 @@
   height: 20px;
   display: block;
   background-image: url(../images/show-code.svg);
+  opacity: .5;
   background-size: 60%;
   cursor: pointer;
+  -webkit-transition: all .5s linear;
 }
+.marked-parse .demo i.show-code.active,
 .marked-parse .demo i.show-code:hover{
   background-image: url(../images/show-code-active.svg);
+  opacity: 1;
 }
 /* demo 后的code标签 */
 .marked-parse .demo + pre code{

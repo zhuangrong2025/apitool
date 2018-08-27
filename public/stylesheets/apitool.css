@@ -44,6 +44,31 @@ body{
   padding: 20px !important;
   min-height: 100% !important;
 }
+.article-origin{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.article-origin .linenumber{
+  min-width: 36px;
+  background-color: #f8f8f8;
+  line-height: 1.97;
+  padding-top: 28px;
+  padding-right: 5px;
+}
+.article-origin .art-area{
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.article-origin .linenumber li{
+  text-align: right;
+  font-size: 13px;
+  color: #959da5;
+  padding-right: 3px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
 /* 头部 */
 .header{
   height: 66px;
@@ -394,7 +419,7 @@ body{
   background-color: #fff;
   border: none;
   width: 100%;
-  padding: 38px 10px 10px;
+  padding: 28px 10px 10px 15px;
   font-size: 14px;
   font-family: inherit;
   color: #333;
@@ -404,6 +429,9 @@ body{
   vertical-align: top;
   min-height: 100%;
   box-sizing: border-box;
+  line-height: 1.8;
+  word-wrap: normal;
+  word-break:  keep-all;
 }
 .ad-list {
   min-height: 800px;
