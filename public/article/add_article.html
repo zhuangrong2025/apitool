@@ -181,12 +181,13 @@ var vm = new Vue({
     autoHeight: function(event) {
       var _this = this
       var $el = $(event.target)
-      $el.css("height", "auto")
-      $el.css("height", ($el[0].scrollHeight)+ "px")
+      $el.css({"height":"auto", "width":"auto"})
+      $el.css({"height": ($el[0].scrollHeight)+ "px", "width": ($el[0].scrollWidth)+ "px"})
       // 按回车确定br的个数，算错行数
       var allTextSplit = $el[0].value.replace(/\n/g, '<br>').split("<br>")
       _this.linenumber = allTextSplit.length
       $el.prev().css("height",$el.css("height"))
+      console.log($el[0].scrollWidth);
     },
     // 失去焦点
     blurText: function(evnet){
