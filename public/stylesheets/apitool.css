@@ -16,7 +16,7 @@ body{
 	background-color: #fff !important;
 }
 ::-webkit-scrollbar-thumb{
-	background-color: inherit !important;
+	background-color: #c9c9c9 !important;
 	border-radius: 8px !important;
 	background-clip: content-box !important;
 	border: 2px solid transparent !important;
@@ -27,17 +27,17 @@ body{
 ::-webkit-scrollbar-thumb:hover {
 	background-clip: content-box !important;
 }
-/* 鼠标滑过编辑区 */
+/* 鼠标滑过编辑区 背景渐隐间接滚动条渐隐*/
 .view-warp,
 .article-origin,
 .article-marked{
-  -webkit-transition: background-color .5s linear !important;
-  background-color: rgb(255, 255, 255) !important;
+  /* -webkit-transition: background-color .5s linear !important;
+  background-color: rgb(255, 255, 255) !important; */
 }
 .view-warp:hover,
 .article-origin:hover,
 .article-marked:hover {
-  background-color: #cfcfcf !important;
+  /* background-color: #cfcfcf !important; */
 }
 .article-marked .marked-parse{
   background-color: #FFFFFF !important;
@@ -52,12 +52,15 @@ body{
 }
 .article-origin .linenumber{
   min-width: 36px;
+  min-height: 100%;
   width: 36px;
   background-color: #f8f8f8;
   line-height: 1.85;
   padding-top: 28px;
   padding-right: 5px;
   display:  inline-block;
+  position: absolute;
+  left: 0;
 }
 .article-origin .art-area{
   /* -webkit-flex: 1; */
@@ -414,14 +417,15 @@ body{
   overflow: auto;
   margin:  0;
   white-space:  nowrap;
+  padding-left: 36px;
 }
 .article-marked{
   border-left: 8px solid rgb(240, 242, 245);
 }
 .art-area {
   background-color: #fff;
-  border: none;
-  width: 100%;
+  /* border: none; */
+  min-width: 100%;
   padding: 28px 10px 10px 15px;
   font-size: 13px;
   font-family: inherit;
