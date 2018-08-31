@@ -427,14 +427,13 @@ body{
 }
 .art-area {
   position:  absolute;
-  /* background-color: #fff; */
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   border: none;
   min-width: 100%;
   padding: 28px 10px 10px 0;
   font-size: 13px;
   font-family: inherit;
-  color: rgba(51, 51, 51, .5);
+  color: rgba(51, 51, 51, 1);
   overflow: hidden;
   resize: none;
   margin: 0;
@@ -448,6 +447,7 @@ body{
   white-space: nowrap;
   display:  inline-block;
   z-index:  2;
+  -webkit-text-fill-color: transparent;
 }
 .ad-list {
   min-height: 800px;
@@ -702,7 +702,7 @@ body{
   left: 0;
   top: 0;
   /* border: 1px solid #000; */
-  background-color: rgba(255, 255, 255, .1);
+  background-color: rgba(255, 255, 255, 1);
   z-index: 1;
   font-size: 13px;
   word-wrap: normal;
