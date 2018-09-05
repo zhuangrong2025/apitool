@@ -5,9 +5,7 @@
   color: #314659;
 }
 .marked-parse strong > em,
-.marked-parse em > strong,
-.marked-parse b > i,
-.marked-parse i > b {
+.marked-parse b > i{
   font-style:normal;
   font-weight:normal;
   text-decoration:underline;
