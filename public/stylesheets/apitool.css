@@ -218,6 +218,7 @@ body{
 .toolbar .tb-format ul li{
   margin-right: 4px;
   position: relative;
+  text-align:  center;
 }
 .toolbar .tb-format li i{
   display: block;
@@ -335,6 +336,14 @@ body{
 .ad-format-quote:before {
   content: "\F10D";
 }
+.ad-format-codeDemo:before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 14px;
+  background-image: url(../images/code-demo.png);
+  transform: translate(5px, 8px);
+}
 /* 发布按钮 */
 .publish{
   display: block;
@@ -347,9 +356,11 @@ body{
   border: none;
   text-align: center;
   font-size: 14px;
+  text-decoration: none !important;
 }
 .publish:hover{
   color: #fff;
+  background-color: rgb(102, 196, 9);
 }
 .ad-container{
   background-color: #fff;
@@ -367,7 +378,7 @@ body{
 }
 .ad-title::before,
 .ad-title::after{
-  display: block;
+  display: none;
   position: absolute;
   top: 80px;
   width: 66px;
@@ -558,11 +569,11 @@ body{
 /* 操作提示层 */
 .ad-alert{
   position: absolute;
-  top: 150px;
+  top: 168px;
   left: 50%;
   border-radius: 0;
-  background-color: rgba(153, 205, 0, .8);
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: rgb(152, 200, 7);
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
@@ -691,7 +702,7 @@ body{
 }
 /* codeContent */
 .codeContent{
-  min-height: 100%;
+  /* min-height: 100%; */
   width: 100%;
   line-height: 1.85;
   padding-top: 28px;

@@ -13,8 +13,8 @@
 <script src="/javascripts/format.js"></script>
 <script src="/javascripts/smart-list.js"></script>
 <!-- shine-ui 在新增页面选择框架js和css文件 -->
-<link rel="stylesheet" href="/vendor/shine-ui/shine-ui.min.css">
-<script type="text/javascript" src="/vendor/shine-ui/shine-ui.min.js"></script>
+<link rel="stylesheet" href="/vendor/shine-ui/css/shine-ui.min.css">
+<script type="text/javascript" src="/vendor/shine-ui/js/shine-ui.min.js"></script>
 <title></title>
 
 </head>
@@ -130,6 +130,7 @@ var vm = new Vue({
       { name: "headline3", character:"### ", presetText:"### 标题3", title:"标题3"  },
       { name: "table", character:"", presetText:"\n| column1 | column2 | column3 |\n|-|-|-|\n| content1 | content2 | content3 |\n", title:"表格"  },
       { name: "code", character:"", presetText:"\n``` html\n<div> this is code </div>\n```", title:"代码块"},
+      { name: "codeDemo", character:"", presetText:'\n<div class="demo">\n  <button class="sui-btn sui-primary">主要</button>  \n  <i class="show-code" title="show code"></i>\n</div>\n\n``` html\n<button class="sui-btn sui-primary">主要</button>\n```', title:"演示块"},
       { name: "linkto", character:"", presetText:"[qq](http://www.qq.com)", title:"链接"  },
       { name: "picture", character:"", presetText:"", title:"插入图片" },
       { name: "listul", character:"", presetText:"- a", title:"无序列表"  },
@@ -158,7 +159,7 @@ var vm = new Vue({
     },
     // codeContent
     codeContent:function(){
-      // codeHighlight  还有判断code片段，不能是全局
+      // codeHighlight  还有判断code片段，不能是全局,替换html标签
       var regx = /<[^>]*>|<\/[^>]*>/gm;
       return this.content.replace(regx,function(m){
         var tag = m.slice(1,m.lastIndexOf(">"))
@@ -230,7 +231,7 @@ var vm = new Vue({
          }else{
            switch(name) {
              // insert
-             case "bold": case "italic": case "underline": case "strikethrough": case "headline1": case "headline2": case "headline3": case "table": case "code": case "linkto": case "listul": case "listol": case "quote":
+             case "bold": case "italic": case "underline": case "strikethrough": case "headline1": case "headline2": case "headline3": case "table": case "code":  case "codeDemo": case "linkto": case "listul": case "listol": case "quote":
                   _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
                break
            }

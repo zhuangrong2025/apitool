@@ -24,7 +24,7 @@ var HeaderComp = {
     }
   },
   template: `<div class="header">
-  <link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_4s35ojdy9ic.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_753288_t6hpd2x006.css">
   <div class="logo"><img src="/images/logo.png"></div>
   <div class="menu">
   <a href="/admin">首页</a>

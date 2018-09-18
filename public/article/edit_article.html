@@ -6,14 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="shortcut icon" href="#" />
 <script src="/javascripts/vue.js"></script>
-<script src="/javascripts/vue-router.js"></script>
 <script src="/javascripts/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="/stylesheets/apitool.css">
 <link rel="stylesheet" href="/stylesheets/marked.css">
 <script src="/javascripts/marked.min.js"></script>
+<script src="/javascripts/format.js"></script>
+<script src="/javascripts/smart-list.js"></script>
 <!-- shine-ui 在新增页面选择框架js和css文件 -->
-<link rel="stylesheet" href="/vendor/shine-ui/shine-ui.min.css">
-<script type="text/javascript" src="/vendor/shine-ui/shine-ui.min.js"></script>
+<link rel="stylesheet" href="/vendor/shine-ui/css/shine-ui.min.css">
+<script type="text/javascript" src="/vendor/shine-ui/js/shine-ui.min.js"></script>
 <title></title>
 <script>
 //获取url参数--封装
@@ -24,11 +25,6 @@
     if (r!=null) return unescape(r[2]); return null;
   }
 })(jQuery);
-$(function(){
-  // textarea自适应高度初始化
-  var sch = $(".art-area")[0].scrollHeight
-  $(".art-area").css("height", (sch + 10) + "px")
-})
 </script>
 </head>
 <body>
@@ -39,27 +35,43 @@ $(function(){
   <!-- 工具栏 -->
   <div class="toolbar">
     <div class="tb-left">
-      <img src="/images/toolbar.png">
+      <div class="tb-format">
+        <ul>
+          <li v-for="(item, index) in formats" @click="formatApply(item.name, item.character, item.presetText)" @mousedown="formatPrevent">
+            <i :class="['ad-format-' + item.name]" :title="item.title" ></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="tb-middle">
+      <!-- <i style="display:inline-block;width:18px;height:18px;color:#666;border:1px solid #ddd;border-radius:50%; font-style:normal;text-align:center" title="帮助">?</i> -->
     </div>
     <div class="tb-right">
       <a href="javascript:;" class="publish" @click="save">保存</a>
     </div>
   </div>
   <!-- //工具栏 -->
+
   <!-- 编辑区 -->
-  <div class="ad-container" v-cloak>
+  <div class="ad-container">
     <!-- 标题 -->
     <div class="ad-title">
       <input  name="title" v-model="title" type="text"  placeholder="">
     </div>
     <!-- //标题 -->
     <div class="ad-article">
-      <div class="article-origin">
-        <textarea name="content" v-model="content"  class="art-area" placeholder="" @input="autoHeight"></textarea>
+      <div class="article-origin" @scroll="linenumScroll">
+        <div class="linenumber">
+          <ul>
+            <li v-for="n in linenumber">{{n}}</li>
+          </ul>
+        </div>
+        <textarea name="content" ref="txta" v-model="content"  class="art-area" placeholder=""  @blur="blurText"  @input="autoHeight" @keyup.enter="smartList" ></textarea>
+        <div class="codeContent" v-html="codeContent"></div>
       </div>
       <div class="article-marked">
         <!-- marked -->
-        <div class="marked-parse" id="marked-content" v-html="markedContent">
+        <div class="marked-parse" id="marked-content" v-markparse="markedContent">
 
         </div>
         <!-- //marked -->
@@ -69,45 +81,106 @@ $(function(){
   <!-- //编辑区 -->
   <!-- 保存提示 -->
   <div class="ad-alert" v-if="success">
-    <i class="iconfont icon-success"></i>  {{ msg }}
+    <i class="iconfont icon-success"></i> {{ msg }}
   </div>
   <!-- //保存提示 -->
 </div>
 <script src="/javascripts/header.js"></script>
 <script type="text/javascript">
+// vue
 var vm = new Vue({
   el: '#apitool',
   components: {
     headerComp: HeaderComp
   },
+  directives:{
+    markparse:{ // 显示编译后的内容
+      bind:function (el,binding) {
+        el.innerHTML= binding.value
+      },
+      update:function (el,binding) {
+        el.innerHTML= binding.value
+        // 执行脚本在head中添加，执行后删除script
+        var reg = /<script[^>]+>(?:(?!<\/script>)[\s\S])*<\/script>/gi;
+        var scripts = binding.value.match(reg);
+        if(scripts){
+          scripts.forEach(function(item){
+            var code = item.substring(item.indexOf(">")+1, item.lastIndexOf("<"))
+            var doc = doc || document;
+            var script = doc.createElement( "script" );
+            script.text = code;
+            doc.head.appendChild(script).parentNode.removeChild(script);
+          })
+        }
+        // 忽略浏览器因为js语法错误而报错
+        window.onerror=function(){return true}
+        // show code,点击显示代码，需要加在这个
+        $(".show-code").parents(".demo").next("pre").hide()
+        $(".show-code").on("click",function(){
+          $(this).parents(".demo").next("pre").toggle()
+          $(this).toggleClass("active")
+        })
+
+        // 初始化textarea的高度，避免首次加载时光标不能定位，不能放在mounted和created钩子中
+        var $el = $(".art-area")
+        $el.css({"height":"auto", "width":"auto"})
+        $el.css({"height": ($el[0].scrollHeight) + "px", "width": ($el[0].scrollWidth) + "px"})
+      }
+    }
+  },
   data: {
     title: "",
     content: "",
-    id: "",
     msg: "",
-    success: false
+    success: false,
+    formats: [
+      { name: "bold", character:"**", presetText:"**粗体**", title:"粗体" },
+      { name: "italic", character:"_", presetText:"_斜体_", title:"斜体"  },
+      { name: "underline", character:"***", presetText:"***下划线***", title:"下划线" },
+      { name: "strikethrough", character:"~~", presetText:"~~中划线~~", title:"中划线" },
+      { name: "headline1", character:"# ", presetText:"# 标题1", title:"标题1"  },
+      { name: "headline2", character:"## ", presetText:"## 标题2", title:"标题2"  },
+      { name: "headline3", character:"### ", presetText:"### 标题3", title:"标题3"  },
+      { name: "table", character:"", presetText:"\n| column1 | column2 | column3 |\n|-|-|-|\n| content1 | content2 | content3 |\n", title:"表格"  },
+      { name: "code", character:"", presetText:"\n``` html\n<div> this is code </div>\n```", title:"代码块"},
+      { name: "codeDemo", character:"", presetText:'\n<div class="demo">\n  <button class="sui-btn sui-primary">主要</button>  \n  <i class="show-code" title="show code"></i>\n</div>\n\n``` html\n<button class="sui-btn sui-primary">主要</button>\n```', title:"演示块"},
+      { name: "linkto", character:"", presetText:"[qq](http://www.qq.com)", title:"链接"  },
+      { name: "picture", character:"", presetText:"", title:"插入图片" },
+      { name: "listul", character:"", presetText:"- a", title:"无序列表"  },
+      { name: "listol", character:"", presetText:"1. a", title:"有序列表"  },
+      { name: "quote", character:"", presetText:"> 引用", title:"引用说明"  },
+    ],
+    linenumber: 1,
+  },
+  mounted:function() {
+    var _this = this
+    _this.$nextTick(function () {
+
+    })
   },
   computed:{
     markedContent:function(){
-      return marked(this.content)
+      return marked(this.content, { gfm: true,
+                                    tables: true,
+                                    breaks: true,
+                                    pedantic: false,
+                                    sanitize: false,
+                                    smartLists: false,
+                                    smartypants: true})
+    },
+    // codeContent
+    codeContent:function(){
+      // codeHighlight  还有判断code片段，不能是全局,替换html标签
+      var regx = /<[^>]*>|<\/[^>]*>/gm;
+      return this.content.replace(regx,function(m){
+        var tag = m.slice(1,m.lastIndexOf(">"))
+        m = "&lt;" + tag + "&gt;"
+        return "<span style=color:#08f>" + m + "</span>"
+      }).replace(/\n/g, '<br>')
     }
   },
-  created: function(){
-    var _this = this
-    _this.id = $.getUrlParam('id')
-    // 查看对应id的数据
-    $.ajax({
-			type: "get",
-			url: "./edit?id=" + _this.id,
-			dataType: "json",
-			success: function(res){
-        _this.title = res.title
-        _this.content = res.content
-			}
-	  })
-	},
   methods:{
-    // 保存
+    //发布
     save: function(){
       var _this = this
       $.ajax({
@@ -132,10 +205,114 @@ var vm = new Vue({
     autoHeight: function(event) {
       var _this = this
       var $el = $(event.target)
-      $el.css("height", "auto")
-      $el.css("height", ($el[0].scrollHeight + 10 )+ "px")
+      $el.css({"height":"auto", "width":"auto"})
+      $el.css({"height": ($el[0].scrollHeight) + "px", "width": ($el[0].scrollWidth) + "px"})
+      // 按回车确定br的个数，算行数
+      var allTextSplit = $el[0].value.replace(/\n/g, '<br>').split("<br>")
+      _this.linenumber = allTextSplit.length
+      $el.prev().css("height",$el.css("height"))
+    },
+    // 失去焦点
+    blurText: function(evnet){
+      var el = event.target
+      el.selectionStart = el.selectionEnd
+    },
+    // 格式化文本
+    formatApply: function(name, character, presetText){
+      var _this = this
+      var el = $(".art-area")[0],
+          val = el.value,
+          startPos = el.selectionStart, // 这值不能存放在data中因为它是实时变化的，也不用select事件去获得
+          endPos = el.selectionEnd,
+          startText = val.substring(0, startPos),
+          endText = val.substring(endPos),
+          selectedText = val.substring(startPos, endPos)
+
+      // 应用格式函数format
+      if ('selectionStart' in el) {
+         if (startPos != endPos) {
+           switch(name) {
+             // wraper
+             case "bold": case "italic": case "underline": case "strikethrough": case "headline1": case "headline2": case "headline3":
+                  _this.content = $.format.wraper(val, el, character, startPos, endPos, startText, endText, selectedText)
+                break
+             case "linkto":
+                  _this.content = $.format.replace(val, el, character, startPos, endPos, startText, endText, selectedText)
+                break
+           }
+         }else{
+           switch(name) {
+             // insert
+             case "bold": case "italic": case "underline": case "strikethrough": case "headline1": case "headline2": case "headline3": case "table": case "code":  case "codeDemo": case "linkto": case "listul": case "listol": case "quote":
+                  _this.content = $.format.insert(el, character, startPos, endPos, startText, endText, presetText)
+               break
+           }
+         }
+      }
+    },
+    formatPrevent: function(e){
+      // 点击工具栏按钮阻止默认事件，让textarea不失去焦点，避免选中文本闪动，效果不佳
+      e.preventDefault();
+      return false;
+    },
+    smartList: function(){
+      var _this = this
+      var el = $(".art-area")[0],
+          val = el.value,
+          startPos = el.selectionStart,
+          endPos = el.selectionEnd,
+          startText = val.substring(0, startPos),
+          endText = val.substring(endPos),
+          startTtextSplit = startText.replace(/\n/g, '<br>').split("<br>"),
+          newEndText = endText.replace(/\n/g, '<br>'),
+          brLen = startTtextSplit.length - 1
+
+      // 无序列表
+      if(startTtextSplit[brLen - 1].indexOf("- ") == 0){ // 如果光标前的有包含"- "
+        _this.content = $.smartList.order(el, startPos, endPos, startText, endText, startTtextSplit, brLen)
+      }
+      // 有序列表
+      if(startTtextSplit[brLen - 1].substring(1,3).indexOf(". ") >= 0){ // 如果光标前的有包含". "
+        _this.content = $.smartList.unordered(el, startPos, endPos, startText, endText, startTtextSplit, brLen, newEndText)
+      }
+
+    },
+
+    // 横向滚动时行数栏固定，linenumber的left向左变化
+    linenumScroll: function(event){
+      var el = $(event.target)
+      var ideLeft = el.scrollLeft()
+      var previewTop = el.scrollTop()
+      $(".linenumber").css("left", ideLeft + "px")
+      // 左右滚动条同时滚动
+      $(".article-marked").scrollTop(previewTop).scrollLeft(ideLeft);
     }
-  }
+
+  },
+  created: function(){
+    var _this = this
+    _this.id = $.getUrlParam('id')
+    // 查看对应id的数据
+    $.ajax({
+			type: "get",
+			url: "./edit?id=" + _this.id,
+			dataType: "json",
+			success: function(res){
+        _this.title = res.title
+        _this.content = res.content
+
+        // 初始化textarea行数
+        var allTextSplit = _this.content.replace(/\n/g, '<br>').split("<br>")
+        _this.linenumber = allTextSplit.length
+			}
+	  })
+
+
+
+
+
+	},
+
 })
 </script>
 
