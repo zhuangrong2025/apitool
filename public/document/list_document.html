@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="shortcut icon" href="#" />
+<script src="/javascripts/vue.js"></script>
+<script src="/javascripts/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="/stylesheets/apitool.css">
+<title></title>
+</head>
+<body>
+<div id="apitool">
+  <!-- 头部组件 -->
+  <header-comp :documents="documents" ></header-comp>
+  <!-- //头部组件 -->
+  <!-- 工具栏 -->
+  <div class="list-bar">
+    <div class="list-name">
+      <span>陈键锋</span>
+      <em>/</em>
+      <span>所有文档</span>
+    </div>
+  </div>
+  <!-- //工具栏 -->
+  <!-- 列表 -->
+  <div class="ad-container" v-cloak>
+    <div class="ad-list" >
+      <div class="ad-table">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th width="45%">文档名称</th>
+          </tr>
+          <tr v-for="(document, index) in documents">
+            <td><a href="#">{{ document.name }}</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <!-- //列表 -->
+</div>
+<script src="/javascripts/header.js"></script>
+<script type="text/javascript">
+// vue实例
+var app = new Vue({
+  el: '#apitool',
+  components: {
+    headerComp: HeaderComp
+  },
+  data: {
+    documents: [],
+  },
+  created: function(){
+    var _this = this;
+    // 获取列表
+    $.ajax({
+			type: "get",
+			url: "./list",
+			dataType: "json",
+			success: function(res){
+        _this.documents = res;
+			}
+	  })
+	},
+  methods:{
+    //删除确认
+    confirm: function(){
+
+    }
+  }
+})
+</script>
+
+</body>
+</html>

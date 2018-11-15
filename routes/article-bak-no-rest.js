@@ -51,12 +51,20 @@ router.get("/edit", function(req, res, next) {
 	})
 })
 
-// vue 查看详情 rest api 2018-11-15
-router.get("/view/:id", function(req, res, next) {
+// vue 查看详情
+router.get("/view", function(req, res, next) {
+	var id = req.query.id
+  //console.log(id);
+	// Article.findOne({ _id: id }).then(function(article){
+	// 	res.json(article)
+	// })
+})
+
+// rest api 2018-11-15
+router.get("view/:id", function(req, res, next) {
 	var id = req.params.id
-  Article.findOne({ _id: id }).then(function(article){
-		res.json(article)
-	})
+	console.log(id);
+  //res.sendFile(path.resolve('./public/article/view_article.html'));
 })
 
 // vue 保存数据

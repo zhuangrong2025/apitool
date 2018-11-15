@@ -1,0 +1,1602 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<meta name="format-detection" content="telephone=no" />
+	<title>全球优选商城</title>
+	<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/static/js/dist/foxui/css/foxui.min.css?v=0.2">
+	<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/template/mobile/default/static/css/style.css?v=2.1.0">
+	<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/static/css/address.css?v=0.20">
+	<!--<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">-->
+	<link href="../addons/ewei_shopv2/static/css/city-picker.css" rel="stylesheet">
+	<!--<link href="../addons/ewei_shopv2/static/css/main.css" rel="stylesheet">-->	<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/static/fonts/iconfont.css?v=2017070719">
+	<!--<link rel="stylesheet" href="//at.alicdn.com/t/font_82607_e93d131lklr6n7b9.css">-->
+	<script src="./resource/js/lib/jquery-1.11.1.min.js"></script>
+	<script src='//res.wx.qq.com/open/js/jweixin-1.1.0.js'></script>
+	<!--   <script src="../addons/ewei_shopv2/static/js/dist/foxui/js/foxui.min.js"></script>-->
+	<script src="../addons/ewei_shopv2/static/js/require.js"></script>
+	<script src="../addons/ewei_shopv2/static/js/myconfig-app.js"></script>
+	<script language="javascript">
+        require(['core'], function(modal) {
+            modal.init({
+                siteUrl: "https://www.vipfxh.com/",
+                baseUrl: "./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=ROUTES"
+            })
+        });
+	</script>  	<style type="text/css">
+		body {
+			position: absolute;
+		;
+			max-width: 750px;
+			margin: auto;
+		}
+
+		.fui-navbar {
+			max-width: 750px;
+		}
+
+		.fui-navbar,
+		.fui-footer {
+			max-width: 750px;
+		}
+
+		.fui-page.fui-page-from-center-to-left,
+		.fui-page-group.fui-page-from-center-to-left,
+		.fui-page.fui-page-from-center-to-right,
+		.fui-page-group.fui-page-from-center-to-right,
+		.fui-page.fui-page-from-right-to-center,
+		.fui-page-group.fui-page-from-right-to-center,
+		.fui-page.fui-page-from-left-to-center,
+		.fui-page-group.fui-page-from-left-to-center {
+			-webkit-animation: pageFromCenterToRight 0ms forwards;
+			animation: pageFromCenterToRight 0ms forwards;
+		}
+	</style>  	<style>
+		.danmu {
+			display: none;
+			opacity: 0;
+		}
+	</style>
+</head>
+
+<body ontouchstart>
+<div class='fui-page-group '>
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/style/base.css">
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/style/index.css">
+<!--[if lt IE 9]>
+<script src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/js/css3-mediaqueries.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/js/jQueryColor.js"></script>
+<!--这个插件是瀑布流主插件函数必须-->
+<script type="text/javascript" src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/js/jquery.masonry.min.js"></script>
+<!--这个插件只是为了扩展jquery的animate函数动态效果可有可无-->
+<script type="text/javascript" src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/js/jQeasing.js"></script>
+<style>
+
+	.sns-content-info {
+		max-height: 4rem;
+		line-height: 1rem;
+		overflow: hidden;
+	}
+
+	.sns-board-page .btn-add-post {
+		position: absolute;
+		bottom: 2.2rem;
+		right: 1.1rem;
+		width: 2.8rem;
+		height: 2.8rem;
+		-webkit-border-radius: 2.8rem;
+		-moz-border-radius: 2.8rem;
+		border-radius: 2.8rem;
+		line-height: 2.6rem;
+	}
+
+	.sns-card-show {
+		padding: 0 0.5rem 0.5rem;
+		height: 1.5rem;
+		display: block;
+		font-style: normal;
+		color: #0290be;
+		font-size: 0.7rem;
+	}
+	.fui-page-group {
+		overflow: auto;
+	}
+	h2 {
+		margin: 0 auto;
+		font-weight: 500;
+		font-size: 15px;
+		-o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+	p.description{
+		font-size: 15px;
+		overflow: hidden;
+		-o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+	.sp1{
+		margin-top: 5px;
+	}
+	.note-author {
+		display: inline-block;
+	}
+	.note-likes {
+		font-size: 12px;
+		display: inline-block;
+		overflow: hidden;
+		text-overflow:ellipsis;
+		line-height:28px;
+		height: 20px;
+	}
+	.note-info {
+		padding-top: 10px;
+	}
+
+
+
+	span.mui-icon {
+		font-size: 14px;
+		color: #007aff;
+		margin-left: -15px;
+		padding-right: 10px;
+	}
+	.mui-off-canvas-left {
+		color: #fff;
+	}
+	.title {
+		margin: 35px 15px 10px;
+	}
+	.title+.content {
+		margin: 10px 15px 35px;
+		color: #bbb;
+		text-indent: 1em;
+		font-size: 14px;
+		line-height: 24px;
+	}
+	input {
+		color: #000;
+	}
+	.img_menu {
+		display: inline-block;
+		width: 30px;
+		margin-top: 7px;
+		border-radius: 15px;
+	}
+	.content .top {
+		height: 100px;
+	}
+	.content .top .img_top {
+		display: inline-block;
+		width: 60px;
+		margin: 20px 35%;
+		border-radius: 30px;
+	}
+
+	/*header 头部*/
+	.mui-off-canvas-wrap .mui-bar {
+		position: absolute!important;
+		-webkit-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+	.mui-bar {
+		position: fixed;
+		z-index: 10;
+		right: 0;
+		left: 0;
+		height: 44px;
+		padding-right: 10px;
+		padding-left: 10px;
+		border-bottom: 0;
+		background-color: #f7f7f7;
+		-webkit-box-shadow: 0 0 1px rgba(0,0,0,.35);
+		box-shadow: 0 0 1px rgba(0,0,0,.35);
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
+	article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+		display: block;
+	}
+
+	.mui-bar .mui-title {
+		right: 40px;
+		left: 40px;
+		display: inline-block;
+		overflow: hidden;
+		width: auto;
+		margin: 0;
+		text-overflow: ellipsis;
+	}
+	.mui-title {
+		font-size: 17px;
+		font-weight: 500;
+		line-height: 44px;
+		position: absolute;
+		display: block;
+		width: 100%;
+		margin: 0 -10px;
+		padding: 0;
+		text-align: center;
+		white-space: nowrap;
+		color: #000;
+	}
+</style>
+
+<style>
+	/*侧滑*/
+
+	/*element.style {*/
+	/*visibility: visible;*/
+	/*z-index: 0;*/
+	/*}*/
+	.mui-off-canvas-left.mui-transitioning, .mui-off-canvas-right.mui-transitioning {
+		-webkit-transition: -webkit-transform 350ms cubic-bezier(.165,.84,.44,1);
+		transition: transform 350ms cubic-bezier(.165,.84,.44,1);
+	}
+
+	.mui-off-canvas-left {
+		color: #fff;
+	}
+	.mui-off-canvas-left {
+		left: 0;
+	}
+	.mui-off-canvas-left, .mui-off-canvas-right {
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		bottom: 0;
+		visibility: hidden;
+		box-sizing: content-box;
+		width: 50%;
+		min-height: 100%;
+		background: #333;
+		-webkit-overflow-scrolling: touch;
+	}
+	.mui-scroll-wrapper {
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		overflow: hidden;
+		width: 100%;
+	}
+
+
+	/*element.style {*/
+	/*transform: translate3d(0px, 0px, 0px) translateZ(0px);*/
+	/*}*/
+	.mui-scroll {
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+	}
+
+
+	.mui-table-view {
+		position: relative;
+		margin-top: 0;
+		margin-bottom: 0;
+		padding-left: 0;
+		list-style: none;
+		background-color: #fff;
+	}
+	.mui-table-view-inverted {
+		color: #fff;
+		background: #333;
+	}
+	.mui-navigate-right {
+		color: #fff;
+	}
+
+	.mui-ios .mui-table-view-cell {
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+
+	.mui-table-view-chevron .mui-table-view-cell {
+		padding-right: 65px;
+	}
+	.mui-table-view-cell {
+		position: relative;
+		overflow: hidden;
+		padding: 11px 15px;
+		-webkit-touch-callout: none;
+	}
+	.close {
+		display: inline-block;
+		font-size: 18px;
+		float: right;
+		margin-right: 5px;
+		margin-top: 5px;
+	}
+	.fui-navbar ~ .fui-content, .fui-content.navbar {
+		bottom:0;
+		padding-bottom:2.2rem;
+	}
+</style>
+<script>
+    //	待修改
+    $(function(){
+        $('.mui-action-menu').click(function(){
+            $('aside').css('z-index','11');
+            $('aside').css('visibility','visible');
+        });
+        $('.close').click(function(){
+            $('aside').css('z-index','-1');
+            $('aside').css('visibility','hidden');
+        })
+    })
+</script>
+<!--侧滑菜单部分-->
+<aside id="offCanvasSide" class="mui-off-canvas-left">
+	<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<div class="content">
+				<div class="top">
+					<div class="close">X</div>
+					<img src="" class="img_top">
+				</div>
+				<div style="margin-top: 20px; text-align: center;">
+									</div>
+			</div>
+			<div class="title" style="margin-bottom: 25px;"></div>
+			<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+				<li class="mui-table-view-cell">
+					<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.user.myfollow" class="mui-navigate-right">
+						<img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/myattention.png" style="width: 20px; height: 20px;vertical-align:middle" alt="">
+						<span style="margin-left: 20px;">我的关注</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.user.collection" class="mui-navigate-right">
+						<img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/collection.png" style="width: 20px; height: 20px;vertical-align:middle" alt="">
+						<span style="margin-left: 20px;">我的收藏</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						<img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/comment.png" style="width: 20px; height: 20px;vertical-align:middle" alt="">
+						<span style="margin-left: 20px;">消息</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.user" class="mui-navigate-right">
+						<img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/personal.png" style="width: 20px; height: 20px;vertical-align:middle" alt="">
+						<span style="margin-left: 20px;">个人中心</span>
+					</a>
+				</li>
+				<!--<li class="mui-table-view-cell">-->
+				<!--<a class="mui-navigate-right">-->
+				<!--Item 5-->
+				<!--</a>-->
+				<!--</li>-->
+				<!--<li class="mui-table-view-cell">-->
+				<!--<a class="mui-navigate-right">-->
+				<!--Item 6-->
+				<!--</a>-->
+				<!--</li>-->
+			</ul>
+		</div>
+	</div>
+</aside>
+<div class='fui-page fui-page-current  fui-page-current sns-board-page'>
+	<header class="mui-bar mui-bar-nav">
+		<a href="#offCanvasSide" class="mui-action-menu">
+						<img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/img/icon02.png" class="img_menu">
+					</a>
+		<!--<a class="mui-action-back mui-btn mui-btn-link mui-pull-right">关闭</a>-->
+		<h1 class="mui-title">圈 子</h1>
+	</header>
+		<div class="fui-content navbar" id="body">
+
+		<div class="content">
+			<!-- 瀑布流样式开始 -->
+			<div class="waterfull clearfloat" id="waterfull" style="margin-top: 45px">
+				<ul id="container">
+															<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1614" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/10/TofGl777DlzdS7pUdD9OsgFO7H7FhU.jpg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="超值12双纯棉袜">超值12双纯棉袜</h2>
+						<p class="description">任选2盒即12双才39.9元</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/E9vsmY8JOjqnA4hwRY41XkiaKDB2tyWNBibAyUeElTzB66UYJnXKl9FB0T8ZrYzFklUwJuicg2xvK1zmEUHFZmoias8ic9cZxfuZz/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">易</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1614"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1611" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/10/H6QXCFfukqFJNuJfWFUKrXuKIKDiNN.jpeg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="疯享汇">疯享汇</h2>
+						<p class="description">疯享汇疯享汇疯享汇</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/PFPUMLY8F769EV3sYHJliajW0PpnJByCLeqb9l3wK9GHFaNkINm2kgPvnp2ZXzbegrZ3e2Pn1dEYYSuGurVaBsCxAfKpFoCMC/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">小小李@一站式社交电商服务商</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1611"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1608" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/10/O8p2s22E9VS98e8tSjesjllVGCF822.jpg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="你好哦哦哦">你好哦哦哦</h2>
+						<p class="description">啊啊啊</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKaRiaG7ibAfdDtQZ2b9pFar3KdQ3icf49VOVZERzuILQvTBkrTSfpX5cxdiatlV5YlbMRIy8ffmEribKQ/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">东</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1608"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1606" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/10/GzsgGt22CU8TSE90lGzuuG0UYQUY9e.jpeg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="123">123</h2>
+						<p class="description">123</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKQkicH54ODehhn3B5VC8LnzWhHMrHolic76YmY7gBqBiaJDYxsJd64IHAW5BMOYpkCNYCFtQvTIZ1qA/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">M</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1606"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1605" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/10/uvVrrVr4Z4vvFaVc5OfmXVmRnAvOFn.jpeg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="来自伊泫巴黎联合创始人">来自伊泫巴黎联合创始人</h2>
+						<p class="description">#伊泫</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/RQFEmWeyyjibyoibsN2Cc0Ycgy8p4kuI6J8IRoHLZG8PjrHuTd1q3dg7ql6prs8o6l3URWibyUNnz6HP2LHLRl51oXtGiaO7BCAy/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">Richard李跃富</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1605"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1604" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/10/DuFHNvD53vMNfPF2nnzzHmugHj7pyO.jpg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="什么是信任?值得收藏~">什么是信任?值得收藏~</h2>
+						<p class="description">信任一个人，<br/>才会毫不保留倾诉，<br/>才会不求回报付出，<br/>才会没有任何隐瞒，<br/>才会真心实意照顾。<br/>信任一个人，<br/>等于解除了防备，<br/>等于交出了真心，<br/>等于没有任何怀疑，<br/>等于没有一丝恶意。<br/><br/>信任，是一种在乎，<br/>这种在乎，<br/>是需要久处之后才能出现的。<br/>信任，是一种赞同，<br/>这种赞同，<br/>是需要一起经历才能认可的。<br/><br/>信任，只有一次，<br/>一旦失去了，很难再有，<br/>信任，就像清水，<br/>一旦浑浊了，就有杂质。<br/>信任一个人，<br/>一旦被欺骗，被利用了，<br/>也就再也不会交出真心了！<br/><br/>信任，是一种在乎，<br/>在乎彼此的感情，<br/>在乎对方的感受，<br/>只有在乎一个人的时候，<br/>才会把信任交出。<br/><br/>信任，是一种幸运，<br/>不是每个人都能拥有的。<br/>被朋友信任，得到的是爱护，<br/>被家人信任，得到的是温暖，<br/>被贵人信任，得到的是帮助！<br/><br/>那些信任你的人，<br/>一定是真心在乎你的人，<br/>他们交出了防备的武器，<br/>把伤害的权利放在你手里，<br/>对你绝对没有任何恶意！<br/><br/>丢什么，都不要丢了良心，<br/>负什么，都不要辜负信任。<br/>当自己被最深爱的人伤害，<br/>你才知道什么叫疼痛，<br/>当自己被最信任的人欺骗，<br/>你才明白什么叫寒心！</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/PFPUMLY8F768txnmqFwdX7wFLpPfBRibHuh96uCtvtQ2bmA5yicp1bW8N2ASJE9szTaU2rkEKpn98IreGSC10tjkibn6HNMRnWl/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">阿蓉*疯享汇联合创始人</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1604"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1603" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/10/B4BgfGdL17NcJr44ad11ilvJgViVdD.jpeg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="姚明集团-海西商界">姚明集团-海西商界</h2>
+						<p class="description">测试上线🏆</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/E9vsmY8JOjrqGa0FHialn5FCnGxWA8Ma78VvDC1MfNIOzqFaFMFmiaLXMkFumSbZ7sgZd7h1GoIGUuUOwibllBR0RDq5T4teJfu/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">黄婼熙'拼命3娘🌙疯享汇Saas CEO</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1603"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1598" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/10/IZ3fN66a63D33tMKA1Y6n6Atn6KWK1.jpeg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="E&#039;SHINY伊泫">E&#039;SHINY伊泫</h2>
+						<p class="description">国庆艳照</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/RQFEmWeyyjibyoibsN2Cc0Ycgy8p4kuI6J8IRoHLZG8PjrHuTd1q3dg7ql6prs8o6l3URWibyUNnz6HP2LHLRl51oXtGiaO7BCAy/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">Richard李跃富</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1598"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1597" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/10/q030uf07UiKG07hmp37iPGmg88878v.jpeg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="E&#039;SHINY伊泫">E&#039;SHINY伊泫</h2>
+						<p class="description">肚皮舞老师的钟爱</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/RQFEmWeyyjibyoibsN2Cc0Ycgy8p4kuI6J8IRoHLZG8PjrHuTd1q3dg7ql6prs8o6l3URWibyUNnz6HP2LHLRl51oXtGiaO7BCAy/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">Richard李跃富</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1597"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1589" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/09/QVjh17YJ7JmZZZ87yJ1OMj5YVj2OU2.jpg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="官健走进火山岛">官健走进火山岛</h2>
+						<p class="description">今天带领官健团队探路火山岛，为即将开始举办的世界先生大赛踩点，太美了，自己看吧</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/RQFEmWeyyjibyoibsN2Cc0Ye4mFGrGR0gfH2R9QGrG1cyJaua4vOFNzTCVXK6hXD8ftUK3pkoUbs4IbJt2biapc15H9EGGbAVeG/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">官健时尚体育Monica张岚</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1589"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1588" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/09/OPAGzJCAWeC12A32932J82297lAxjC.png?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="哦哦分享美食">哦哦分享美食</h2>
+						<p class="description">分享图片</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/PiajxSqBRaEJ97wCpoianTiaKpmomu5ic7rqj7l4BnrvH3svJibXGBtHH4CwibHVVibCRsibRibWd02vtLeOIhlHcBl5ueA/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">劉小叔🐮</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1588"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1568" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/09/mMOcv63s660oM64efOv6ZeztV0F45O.jpg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="噢噢噢">噢噢噢</h2>
+						<p class="description">下雨下雨天</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM5yuzibLKP4OIqd7wfDr5rRYWJPYMnibSxhtdvfCR8ibYozTs3wtwOKAxedDD4Ssnrjoa3SvMJhdcgiaw/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">陈意斌</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1568"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1567" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/09/xRn9XqilA97RV9iQWbWa7nezInR4dY.png?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="红楼一梦">红楼一梦</h2>
+						<p class="description">一个是阆苑仙葩，一个是美玉无暇</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/RQFEmWeyyjiccUAs1H6EFmAoqH61exbxHtibE0RKL1pblicIxP6tQguqSPfhTlh8CWXBSVia0MMcy9ZwTGoO7zzpY1sJmheMXkcd/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">公子肆</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1567"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1566" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/09/Ey4u9p17688F9Qpq4fQ647LnfBL47q.jpg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="就跳雨  主要">就跳雨  主要</h2>
+						<p class="description">过油肉</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM5yuzibLKP4OIqd7wfDr5rRYWJPYMnibSxhtdvfCR8ibYozTs3wtwOKAxedDD4Ssnrjoa3SvMJhdcgiaw/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">陈意斌</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1566"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1531" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/09/frk8BRas99gaGd3n9aR9arfCs93R9I.jpg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="人生这几条规则，你中了几条？">人生这几条规则，你中了几条？</h2>
+						<p class="description">1.不要奢望别人给你经济上的任何帮助，钱对任何人都是不够用的。（学会给与）<br/><br/>2.朋友帮你是善事，是道义；朋友不帮你也无可厚非，不该心怀怨尤，人家不欠你的！（学会理解）<br/><br/>3.要知道没有人必须在你需要的时候帮你，只有你自己，所以让自己独立、坚强、快乐、幸福，才是你需要做的，毕竟只有自己和你生死与共，休戚相关，明白？（学会自强)<br/><br/>4.不要看贫富交朋友，他有亿万家财跟你一毛钱关系都没有，别把自己弄成哈巴狗，他也许一无所有却可以把唯一的馒头分给你。（学会分辨）<br/><br/>5.不要为了经济富有的朋友疏远了精神富有的朋友，慢慢你会明白，经济上富有的朋友可以带你吃喝玩乐，也可以带给你复杂纷乱的世俗烦恼，精神富有的朋友也许只能带你去田野里，去溪流畔，没有美酒佳肴，没有香槟、咖啡，没有舞池，可是她能陪你一起奔跑一起笑的像傻子。（学会自重）<br/><br/>6.可以相信世上真的有美好坚贞的爱情，但是它只属于牛郎织女、梁山伯祝英台，还有国外的罗密欧和朱丽叶，因为他们都没有活很久，而我们是要活很久的。（学会珍惜)<br/><br/>7.不管你因为什么结婚，只要你有了孩子，你就要爱这个家，不管它多么简陋多么寒冷，你都有义务让它温馨起来，因为你是父母！（学会承担）<br/><br/>8.我们的青春眨眼就没有了，皱纹一条一条的爬到眼角，我们阻止不了岁月破坏我们的容颜，可是我们可以让心在岁月中慢慢磨砺，如蚌中的沙，慢慢的光润起来，等到我们发苍齿摇、步履螨跚的时候，还可以让珍珠的光泽晕红最后的行程不是吗？（学会成长）<br/><br/>9.不要执着，人生有很多不如意，世界不会迎合你，地球不会为你转的，所以不要执着于拥有，连我们都只是红尘的过客，人生赤条条的来，死又能带走什么呢？（学会放下）<br/><br/><br/><br/>来，疯享汇让我们一起创业‼️</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/PFPUMLY8F768txnmqFwdX7wFLpPfBRibHuh96uCtvtQ2bmA5yicp1bW8N2ASJE9szTaU2rkEKpn98IreGSC10tjkibn6HNMRnWl/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">阿蓉*疯享汇联合创始人</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1531"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1530" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/09/j9ppdpe7YaF17D539ez7Dd1dXDHZfA.jpeg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="【香港·潮福城】">【香港·潮福城】</h2>
+						<p class="description">月饼系列  餐与家  商城已上线<br/><br/>全球最低价，微信扫一扫二维码即可直接购买<br/><br/>推荐购买还有最高35元分佣<br/><br/>厦门自取，外地包邮哦</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/vi_32/0njTiaunZxtb3NuxuwbQlv6XicglUqCf2k968Od28xniamvJtP7jKWDEQcLnfExUDF5tfc5iaxQeT16e8R1SwtpMNA/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">Suet Lam🌸</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1530"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1529" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/08/Z7KTZxyXR3i6Q6p1YpPyLYlyxI6i6l.jpeg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="从你的全世界路过">从你的全世界路过</h2>
+						<p class="description">这是一本被定义为睡前故事却在每个夜晚让人泪流满面的书，它讲了许多琐碎细微的故事，那漆黑的街;那街尾的灯;那灯下的她。总会有那么几篇会让你润了眼眶，紧了鼻翼。<br/>之所以这本书能够引起我强烈的共鸣，是因为在书中要寻找到了自己想要的生活。每一个故事都总是看似并不起眼的开端，却总是引起让人神伤的一段情事或者往事。即使前后不一致，不呼应，一会成熟的像个俯首思考的哲人，一会像个站街泼骂的村妇。但是，她所表述的东西我能懂，且能引起内心的共鸣。<br/>经常感叹所求所爱皆不可得，怨那天意无常，怨那事难如愿，怨那爱情如沙土不等风吹就散了大半。可年少时也曾有过只求此生尽随我愿，不管满身鲜血淋漓的洒脱自在。直到遇见了你。我如王惠一般飞蛾扑火，她尚且还有一张支票和末等兵杀出一条血路成为一等兵的逆袭，可我连“爱过”也没有。如此多年过去了，我遇见了千万人像你的眉像你的眼，可终究不是你的脸。我还是那个杀出一条血路的末等兵，只可惜那是一条不归路。<br/>爱情或许不是青春的全部，但是却是青春难以绕开的过程。有多少人就会有多少样的爱情。比如猪头和崔敏。为了爱人改变了自己，为了帮她脱离小偷的称号，每日都会翘课做家教赚钱，每日都会去陪着她上晚自习，他要让这世界一切的苦难和艰涩都伤害不了她。比如毛毛和管春。帮毛毛还债用撞车的方式，思念她却骂她泼妇，告白求婚却问她累不累。<br/>让我印象最深的还是反向人这篇。何为反向人，如书中所说一样，从你出生开始，这个人就与你休戚相关，而你们永远都在看不见的战场里。所以，要是永远也不碰到也好。若是碰到，是个同性也好大不了相互竞争，就怕碰到了，还是异性。而我大抵是碰到了。我开心时看到你流泪，我得到稿费时发现你丢了工作，我有了新的追求者而你却失恋了。可我怎么舍得与你争夺生命的质量，若是我的生活艰难一些，那你是否能过的更加幸福。如果我们的幸运值是100的话，我希望也愿意你占去其中的99。<br/>泰戈尔曾说过“有一个夜晚我烧毁所有的记忆，从此我的梦就透明了；有一个早晨我丢掉了所有的昨天，从此我的脚步就轻盈了”。可每个早晨，昨天的种种我却愈发深刻。<br/>虽说执念误人，可我仍旧希望有个如你一般的人。如这山间清晨一般明亮清爽的人，如奔赴古城道路上阳光一般的人，温暖而不炙热，覆盖我所有肌肤。由起点到夜晚，由山野到书房，一切问题的答案都很简单。我希望有个如你一般的人，贯彻未来，数遍生命的公路牌。</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://img.vipfxh.com/images/7/2018/08/GPpkH5tBKbil5LPjhMM65CIC1KL61f.jpeg" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">独饮往事昭昭</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1529"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1528" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/08/JFwSTQgsu4btj9FTum9WwubwTQfK29.jpeg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="很时尚">很时尚</h2>
+						<p class="description">手机今生今世🎁😒👇</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/RQFEmWeyyjiccUAs1H6EFmAoqH61exbxHtibE0RKL1pblicIxP6tQguqSPfhTlh8CWXBSVia0MMcy9ZwTGoO7zzpY1sJmheMXkcd/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">公子肆</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1528"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1525" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/08/Rntw7VpoOwZVWMd8DvTVD7M7DzNMmK.jpg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="牛油果PK牛奶">牛油果PK牛奶</h2>
+						<p class="description">😌😌😌</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://thirdwx.qlogo.cn/mmopen/RQFEmWeyyjiccUAs1H6EFmAoqH61exbxHtibE0RKL1pblicIxP6tQguqSPfhTlh8CWXBSVia0MMcy9ZwTGoO7zzpY1sJmheMXkcd/132" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">公子肆</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1525"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+																				<li class="item">
+						<a href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id=1523" class="a-img">
+
+							<img src="https://img.vipfxh.com/images/7/2018/08/z0Mm32rM5253Suuny0unmYYEmnnluB.jpg?imageView2/0/w/640/q/70" alt="">
+						</a>
+						<h2 class="li-title" title="银耳莲子汤">银耳莲子汤</h2>
+						<p class="description">😌😌😌</p>
+
+
+						<div data-v-60cc8ce4="" class="note-info">
+							<div data-v-60cc8ce4="" class="note-author">
+								<a data-v-bc625c56="" data-v-60cc8ce4="" href=""
+								   class="avatar note-author-avatar avatar-XXS type-outline"  style="display: inline-block;width: 28px; height: 28px; border-radius: 14px; overflow: hidden">
+                    					<span data-v-bc625c56="">
+                        					<img data-v-bc625c56="" src="https://img.vipfxh.com/images/7/2018/08/ibP3Pun9nujHNaSsjZ3p991UCS494s.jpg" class="avatar-img">
+                    					</span>
+								</a>
+								<a data-v-60cc8ce4="" href="" class="note-author-nickname" style="color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;">公子肆</a>
+								<span data-v-60cc8ce4="" owl="likes/5a27a1aa19f71642fe7257f3" class="note-likes owl-imp-showed">
+									<a href='javascript:;' class="download" data-num="1523"  onclick="MyDownload(this)"><img src="../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01
+										.png" style="width: 15px;margin-left: 28px"></a>
+								</span>
+								<textarea id="input" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">这是幕后黑手</textarea>
+							</div>
+						</div>
+					</li>
+														</ul>
+			</div>
+			<!-- loading按钮自己通过样式调整 -->
+			<div id="imloading" style="width:150px;height:30px;line-height:30px;font-size:16px;text-align:center;border-radius:3px;opacity:0.7;background:#000;margin:10px auto 30px;color:#fff;display:none">
+				正在加载.....
+			</div>
+		</div>
+
+		<div class="board-list-empty" style="display:none;color:#999;font-size:.75rem;margin:.5rem;text-align: center;">
+			<i class="icon icon-comment" style="font-size:4rem;color:#ccc;"></i> <br/>暂时没有任何话题
+		</div>
+
+		<!--<div class='infinite-loading'><span class='fui-preloader'></span><span class='text'> 正在加载...</span></div>-->
+
+	</div>
+
+
+	<a class="btn btn-primary btn-add-post external" href="./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=account.login&backurl=aT03JmM9ZW50cnkmbT1ld2VpX3Nob3B2MiZkbz1tb2JpbGUmcj1zbnMubmV3JmlkPTI5"><i class="icon icon-edit2"></i></a>
+
+
+</div>
+
+<script>
+    function MyDownload(obj){
+        var tittle = $(obj).parent().parent().parent().prev().prev('h2').text();
+        var content = $(obj).parent().parent().parent().prev('p').text();
+        var input = $(obj).parent().next('textarea');
+        $(obj).parent().next('textarea').val(tittle+'。'+content);
+        input.select(); // 选中文本
+        document.execCommand("copy"); // 执行浏览器复制命令
+        alert("复制成功");
+    }
+</script>
+
+<script type="text/javascript">
+
+    /*
+
+        抛开瀑布流布局各种乱七八糟的算法，基于masonry的瀑布流，很是简单的，而且通过扩展animate,能实现瀑布流布局的晃动、弹球等效果。
+
+        masonry还有很多参数我这里注解了常用的参数
+
+     */
+
+    $(function(){
+
+        /*瀑布流开始*/
+        var container = $('.waterfull ul');
+        var loading=$('#imloading');
+        // 初始化loading状态
+        loading.data("on",true);
+        /*判断瀑布流最大布局宽度，最大为1280*/
+        function tores(){
+            var tmpWid=$(window).width();
+            if(tmpWid>768){
+                tmpWid=768;
+            }else{
+                var column=Math.floor(tmpWid/2);
+                tmpWid=column*2;
+            }
+            $('.waterfull').width(tmpWid);
+        }
+        tores();
+        $(window).resize(function(){
+            tores();
+        });
+        container.imagesLoaded(function(){
+            container.masonry({
+                columnWidth: 1,
+                itemSelector : '.item',
+                isFitWidth: false,//是否根据浏览器窗口大小自动适应默认false
+                isAnimated: true,//是否采用jquery动画进行重拍版
+                isRTL:false,//设置布局的排列方式，即：定位砖块时，是从左向右排列还是从右向左排列。默认值为false，即从左向右
+                isResizable: true,//是否自动布局默认true
+                animationOptions: {
+                    duration: 800,
+                    easing: 'easeInOutBack',//如果你引用了jQeasing这里就可以添加对应的动态动画效果，如果没引用删除这行，默认是匀速变化
+                    queue: false//是否队列，从一点填充瀑布流
+                }
+            });
+        });
+
+
+        page = 1;
+        $("#body").scroll(function() {
+
+            if (!loading.data("on")) return;
+            // 计算所有瀑布流块中距离顶部最大，进而在滚动条滚动时，来进行ajax请求，方法很多这里只列举最简单一种，最易理解一种
+            var itemNum = $('#waterfull').find('.item').length;
+            var itemArr = [];
+            itemArr[0] = $('#waterfull').find('.item').eq(itemNum - 1).offset().top + $('#waterfull').find('.item').eq(itemNum - 1)[0].offsetHeight;
+            itemArr[1] = $('#waterfull').find('.item').eq(itemNum - 2).offset().top + $('#waterfull').find('.item').eq(itemNum - 1)[0].offsetHeight;
+            itemArr[2] = $('#waterfull').find('.item').eq(itemNum - 3).offset().top + $('#waterfull').find('.item').eq(itemNum - 1)[0].offsetHeight;
+            var maxTop = Math.max.apply(null, itemArr);
+            if (maxTop < $(window).height() + $(document).scrollTop()) {
+                //加载更多数据
+
+                page = page +1;
+                loading.data("on", false).fadeIn(800);
+                $.ajax({
+                    url: "./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.newv2.getlist&bid=29",
+                    data:{page: page},
+                    dataType:'json',
+                    success: function (result) {
+                        var sqlJson = result.result.list;
+                        (function (sqlJson) {
+                            /*这里会根据后台返回的数据来判断是否你进行分页或者数据加载完毕这里假设大于30就不在加载数据*/
+                            if (itemNum > result.result.total) {
+                                loading.text('我是有底线的！');
+                            } else {
+                                var html = "";
+                                for (var i in sqlJson) {
+                                    html += "<li class='item'><a href='./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.post&id="+sqlJson[i].id+"' class='a-img'><img src='" + sqlJson[i].images[0] + '?imageView2/0/w/640/q/70' + "'></a>";
+                                    html += "<h2 class='li-title'>" + sqlJson[i].title + "</h2>";
+                                    html += "<p class='description'>" + sqlJson[i].content + "</p><div data-v-60cc8ce4='' class='note-info'>";
+                                    html += "<div data-v-60cc8ce4='' class='note-author'><a data-v-bc625c56='' data-v-60cc8ce4='' href='' class='avatar note-author-avatar avatar-XXS type-outline'  style='display: inline-block; width: 28px; height: 28px; border-radius: 14px; overflow: hidden'><span data-v-bc625c56=''><img data-v-bc625c56='' src='" + sqlJson[i].avatar + "' class='avatar-img'></span></a>";
+                                    html += "<a data-v-60cc8ce4='' href='' class='note-author-nickname' style='color: #333; font-size: 12px;width: 60px;display: inline-block;overflow: hidden; -o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;vertical-align: top;line-height: 28px;margin-left: 10px;'>" + sqlJson[i].nickname + "</a><span data-v-60cc8ce4='' owl='likes/5a27a1aa19f71642fe7257f3' class='note-likes owl-imp-showed'><a href='javascript:;' class='download'  data-num='\" + sqlJson[i].id + \"'  onclick='MyDownload(this)'><img src='../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/copy01.png' style='width: 15px;margin-left: 28px'></a></span></div></div></li>";
+                                }
+                                /*模拟ajax请求数据时延时800毫秒*/
+                                var time = setTimeout(function () {
+                                    $(html).find('img').each(function (index) {
+                                        loadImage($(this).attr('src'));
+                                    })
+                                    var $newElems = $(html).css({opacity: 0}).appendTo(container);
+                                    $newElems.imagesLoaded(function () {
+                                        $newElems.animate({opacity: 1}, 800);
+                                        container.masonry('appended', $newElems, true);
+                                        loading.data("on", true).fadeOut();
+                                        clearTimeout(time);
+                                    });
+                                }, 800);
+                            }
+                        })(sqlJson);
+                    }
+                });
+            }
+        });
+
+
+
+        /*模拟从后台获取到的数据*/
+//        var sqlJson=[{'title':'瀑布流其实就是几个函数的事！','intro':'爆料，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。',
+//            'src':'../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/one.jpeg','writer':'志强不息','date':'2小时前','looked':321},
+//            {'title':'瀑布流其实就是几个函数的事！','intro':'爆料了，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。',
+//                'src':'../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/demo2.jpg','writer':'志强不息','date':'2小时前','looked':321},
+//            {'title':'瀑布流其实就是几个函数的事！','intro':'爆料了，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。',
+//                'src':'../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/p1.jpg','writer':'志强不息','date':'2小时前','looked':321},
+//            {'title':'瀑布流其实就是几个函数的事！','intro':'爆料了，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。',
+//                'src':'../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/p1.jpg','writer':'志强不息','date':'2小时前','looked':321}];
+
+        /*本应该通过ajax从后台请求过来类似sqljson的数据然后，便利，进行填充，这里我们用sqlJson来模拟一下数据*/
+
+
+        function loadImage(url) {
+            var img = new Image();
+            //创建一个Image对象，实现图片的预下载
+            img.src = url;
+            if (img.complete) {
+                return img.src;
+            }
+            img.onload = function () {
+                return img.src;
+            };
+        };
+        loadImage('../addons/ewei_shopv2/plugin/sns/template/mobile/default/newv2/images/one.jpeg',test());
+        /*item hover效果*/
+        var rbgB=['#71D3F5','#F0C179','#F28386','#8BD38B'];
+        $('#waterfull').on('mouseover','.item',function(){
+            var random=Math.floor(Math.random() * 4);
+            $(this).stop(true).animate({'backgroundColor':rbgB[random]},1000);
+        });
+
+        $('#waterfull').on('mouseout','.item',function(){
+            $(this).stop(true).animate({'backgroundColor':'#fff'},1000);
+        });
+    })
+
+</script>
+
+<link href="../addons/ewei_shopv2/plugin/diypage/static/css/foxui.diy.css?v=201705261600"rel="stylesheet"type="text/css"/>
+
+<style type="text/css">
+
+    .diymenu .item .inner {background: #ffffff;}
+
+    .diymenu .item .inner:before,
+
+    .diymenu .item .inner:after {border-color: #ffffff;}
+
+    .diymenu .item .inner .text {color: #515151;}
+
+    .diymenu .item .inner .icon {color: #515151;}
+
+    .diymenu .item.on .inner {background: #ffffff;}
+
+    .diymenu .item.on .inner .text {color: #ff2740;}
+
+    .diymenu .item.on .inner .icon {color: #ff2741;}
+
+    .diymenu .item .child {border-color: #eeeeee; background-color: #f4f4f4;}
+
+    .diymenu .item .child a {color: #666666;}
+
+    .diymenu .item .child a:after {border-color: #eeeeee; color: #666666;}
+
+    .diymenu .item .child .arrow:before {background: #eeeeee;}
+
+    .diymenu .item .child .arrow:after {background: #f4f4f4;}
+
+    .diymenu .item .inner .badge {background: ;}
+
+</style>
+
+
+<div class="diymenu" style=" position: absolute;max-width: 750px;">
+
+
+        <div class="item item-col-5 " onclick="location.href = './index.php?i=7&c=entry&m=ewei_shopv2&do=mobile'" >
+
+            <div class="inner  top">
+
+
+
+
+
+
+                        <span class="icon icon-home top"></span>
+
+
+                    <span class="text top" >商城首页</span>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="item item-col-5 on" onclick="location.href = './index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.newv2&id=29'" >
+
+            <div class="inner  top">
+
+
+
+
+
+
+                        <span class="icon icon-comment top"></span>
+
+
+                    <span class="text top" >圈子</span>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="item item-col-5 " onclick="location.href = './index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=commission'" >
+
+            <div class="inner  top">
+
+
+
+
+
+
+                        <span class="icon icon-shop top"></span>
+
+
+                    <span class="text top" >我的小店</span>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="item item-col-5 " onclick="location.href = './index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=member.cart'" id="menucart">
+
+            <div class="inner  top">
+
+
+
+
+
+
+                        <span class="icon icon-cart top"></span>
+
+
+                    <span class="text top" >购物车</span>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="item item-col-5 " onclick="location.href = './index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=member'" >
+
+            <div class="inner  top">
+
+
+
+
+
+
+                        <span class="icon icon-friendfavor top"></span>
+
+
+                    <span class="text top" >会员中心</span>
+
+
+            </div>
+
+
+        </div>
+
+
+</div>
+
+
+    <script>
+
+        function showSubMenu(obj) {
+
+            $(obj).toggleClass('on').siblings().removeClass('on');
+
+            $(obj).find('.child').toggleClass('in');
+
+            $(obj).siblings().find('.child').removeClass('in')
+
+        }
+
+        $(function () {
+
+            var len = $(".diymenu .child").length;
+
+            setTimeout(function () {
+
+                $(".diymenu .child").each(function (i) {
+
+                    var width = $(this).outerWidth();
+
+                    var margin = -(width / 2);
+
+                    var left = '50%';
+
+                    var pleft = $(this).position().left - width / 2;
+
+                    if(i==0 && pleft<2){
+
+                        left = 2;
+
+                        margin = 0;
+
+                        var pwidth = $(this).closest('.item').width();
+
+                        var arrowleft = pwidth / 2;
+
+                        var oldleft = parseFloat( $(this).find('.arrow').css('left').replace('px','') );
+
+                        $(this).find('.arrow').css({'left': arrowleft-10, 'margin-left': 0});
+
+                    }
+
+                    else if(i+1==len) {
+
+                        var thisleft = parseFloat( $(this).offset().left.toString().replace('px',''));
+
+                        if((thisleft+width)>$(document).width()){
+
+                            var pleft = $(this).closest('.item').offset().left;
+
+                            left =  $(document).width() - width - 2 - pleft;
+
+                            margin = 0;
+
+                            var pwidth = $(this).closest('.item').width();
+
+                            var itemleft = (pwidth / 2) + pleft;
+
+                            var childleft = $(document).width() - width - 2;
+
+                            var arrowleft = itemleft - childleft;
+
+                            $(this).find('.arrow').css({'left': arrowleft-10, 'margin-left': 0});
+
+                        }
+
+                    }
+
+                    $(this).css({'position': 'absolute', 'left': left, 'margin-left': margin, 'z-index': 0});
+
+                })
+
+            }, 500);
+
+        })
+
+    </script>
+
+
+
+
+<!--二次青龙 首页 限制引用 2018/5/17 -->
+
+
+<script language='javascript'>
+
+	$(function(){
+
+		$.getJSON("./index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=util.task");
+
+	})
+
+</script>
+
+
+
+<script language="javascript">
+
+	require(['init']);
+
+
+
+	setTimeout(function () {
+
+		if($(".danmu").length>0){
+
+			$(".danmu").remove();
+
+		}
+
+	}, 500);
+
+</script>
+
+
+
+
+
+
+
+
+
+
+<script language="javascript">
+
+        clearTimeout(window.interval);
+
+        window.interval = setTimeout(function () {
+
+            window.shareData = {"title":"\u5708\u5b50","imgUrl":"","link":"https:\/\/www.vipfxh.com\/app\/index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.newv2&id=29","desc":""};
+
+            jssdkconfig = null || { jsApiList:[] };
+
+            jssdkconfig.debug = false;
+
+            jssdkconfig.jsApiList = ['checkJsApi','onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','showOptionMenu', 'hideMenuItems', 'onMenuShareQZone', 'scanQRCode','openLocation'];
+
+            wx.config(jssdkconfig);
+
+            wx.ready(function () {
+
+                wx.showOptionMenu();
+
+
+
+
+
+
+                    window.shareData.success = "";
+
+                    if(window.shareData.success){
+
+                        var success = window.shareData.success;
+
+                        window.shareData.success = function(){
+
+                            eval(success)
+
+                        };
+
+                    }
+
+
+
+
+
+                wx.onMenuShareAppMessage(window.shareData);
+
+                wx.onMenuShareTimeline(window.shareData);
+
+                wx.onMenuShareQQ(window.shareData);
+
+                wx.onMenuShareWeibo(window.shareData);
+
+                wx.onMenuShareQZone(window.shareData);
+
+            });
+
+        },500);
+
+
+
+
+
+
+
+
+		//	Share to qq
+
+		require(['//qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js'], function(setShareInfo) {
+
+			setShareInfo({
+
+				title: "圈子",
+
+				summary: "",
+
+				pic: "",
+
+				url: "https://www.vipfxh.com/app/index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.newv2&id=29"
+
+			});
+
+		});
+
+
+</script>
+
+
+
+
+
+
+
+
+<a class="diy-layer external" style="width: 70px; position: fixed; display: block; overflow: hidden; z-index: 999; bottom: 97px; right: 20px; text-align: left;" href="./index.php?i=7&c=entry&toopenid=oiIri0RN7cdLbr468RQDqMOiZu4k&do=chat&m=cy163_customerservice"><img src="https://img.vipfxh.com/images/7/2018/09/ojHu1S1c1IWC85hLpzs5t9RJmY0MMT.png" style="height: auto; width: 100%; display: block;" /></a>
+
+
+
+
+
+	<a class="diy-gotop external" style=" position: fixed; overflow: hidden; z-index: 999; bottom: 51px; right: 10px; text-align: left; display:none;"  id="gotop" >
+
+
+        <div style="background: #000000; opacity: 0.5; line-height: 33px; text-align: center; border-radius: 31px; height: 31px; width: 31px;">
+
+            <i class="icon icon-top" style="color: #ffffff; font-size: 21px;"></i>
+
+        </div>
+
+
+</a>
+
+
+
+
+<script>
+
+    $(function () {
+
+
+        $(".fui-content").bind('scroll resize', function () {
+
+            var scrolltop = $(".fui-content").scrollTop();
+
+            if (scrolltop > "300") {
+
+                $("#gotop").fadeIn(100)
+
+            } else {
+
+                $("#gotop").fadeOut(100)
+
+            }
+
+        });
+
+
+        $("#gotop").unbind('click').click(function () {
+
+            $(".fui-content").animate({scrollTop: "0px"}, 1000)
+
+        });
+
+    });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="wap-qrcode-container">
+
+    <p class="example1">全球优选商城</p>
+
+    <div class="wap-qrcode-image" id="wap-qrcode"></div>
+
+    <p class="example1">微信“扫一扫”浏览</p>
+
+</div>
+
+<script language="javascript">
+
+    $(function(){
+
+     setTimeout(function(){
+
+         require(['jquery.qrcode'],function(q){
+
+             $('#wap-qrcode').html('');
+
+             $('#wap-qrcode').qrcode("https://www.vipfxh.com/app/index.php?i=7&c=entry&m=ewei_shopv2&do=mobile&r=sns.newv2&id=29&wxref=mp.weixin.qq.com");
+
+         });
+
+     },500);
+
+
+
+    })
+
+</script>
+
+
+
+<span style="display:none"><script src="//www.vipfxh.com/twemoji.min.js"></script>
+<script type="text/javascript">twemoji.parse(document.body);</script>
+<style>
+img.emoji {
+   height: 1em;
+   width: 1em;
+   margin: 0 .05em 0 .1em;
+   vertical-align: -0.1em;
+   display: inline;
+}
+</style>
+<script src="//s19.cnzz.com/z_stat.php?id=1262459447&web_id=1262459447" language="JavaScript"></script></span>
+
+<script>var imgs = document.getElementsByTagName('img');for(var i=0, len=imgs.length; i < len; i++){imgs[i].onerror = function() {if (!this.getAttribute('check-src') && (this.src.indexOf('http://') > -1 || this.src.indexOf('https://') > -1)) {this.src = this.src.indexOf('https://www.vipfxh.com/attachment/') == -1 ? this.src.replace('https://img.vipfxh.com/', 'https://www.vipfxh.com/attachment/') : this.src.replace('https://www.vipfxh.com/attachment/', 'https://img.vipfxh.com/');this.setAttribute('check-src', true);}}}</script></body>
+
+</html>

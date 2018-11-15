@@ -24,6 +24,7 @@
     if (r!=null) return unescape(r[2]); return null;
   }
 })(jQuery);
+
 $(function(){
   // show code,点击显示代码，需要加在这个
   $(".show-code").parent().next("pre").hide()
@@ -83,11 +84,12 @@ var vm = new Vue({
     // 查看对应id的数据
     $.ajax({
 			type: "get",
-			url: "./view/" + _this.id,
+			url: "./view?id=" + _this.id,
 			dataType: "json",
 			success: function(res){
-       _this.title = res.title
-       $("#detail").html(marked(res.content))
+        _this.title = res.title
+        // _this.content = marked(res.content)
+        $("#detail").html(marked(res.content))
 			}
 	  })
 

@@ -35,6 +35,7 @@ app.use("/api", require("./routes/api"))
 app.use("/", require("./routes/main"))
 app.use("/users", require("./routes/users"))
 app.use("/article", require("./routes/article"))
+app.use("/document", require("./routes/document"))
 
 /* 数据库连接 */
 mongoose.connect("mongodb://localhost:27018/apitool", function(err){

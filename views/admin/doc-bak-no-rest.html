@@ -10,13 +10,12 @@
   </tr>
   {% for doc in docs %}
   <tr>
-    <td>
-      <a href="/admin/doc/view/{{ doc._id.toString()}}">{{ doc.title }}</a>
-     </td>
+    <td>{{ doc.title }} </td>
     <td>{{ doc.content }}</td>
     <td>
       <a href="javascript:;" id="{{ doc._id.toString()}}">删除</a>
       <a href="/admin/doc/modify/{{ doc._id.toString()}}/{{ doc.title}}">修改</a>
+      <!-- <a href="/admin/doc/modify?id={{ doc._id.toString()}}&title={{doc.title}}&content={{doc.content}}">修改</a> -->
     </td>
   </tr>
   {% endfor %}
@@ -28,8 +27,11 @@
      $(this).find("td:last a:eq(0)").on("click", function(){
        var delObj = $(this)
        $.ajax({
-          type: 'delete',
-          url: '/admin/doc/' + delObj.attr("id"),
+          type: 'post',
+          url: '/admin/doc/del',
+          data:{
+                 id : delObj.attr("id")
+               },
           dataType: 'json',
           success: function(data){
             delObj.parents("tr").remove()

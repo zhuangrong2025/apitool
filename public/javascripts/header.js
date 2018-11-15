@@ -8,7 +8,7 @@ $(function(){
     })
 })
 var HeaderComp = {
-  props: [],
+  props: ["documents"],
   data: function () {
     return {
       librarys: [
@@ -31,8 +31,8 @@ var HeaderComp = {
   <a href="javascript:;" class="dropdown-lib" id="lib">
     <span>文档<i class="iconfont icon-jiantou32"></i></span>
     <ul>
-      <li v-on:click.prevent="linkto"  v-for="lib in librarys" :data-url="lib.url">
-        <i class="iconfont icon-document"></i>{{lib.name}}
+      <li v-on:click.prevent="linkto"  v-for="doc in documents">
+        <i class="iconfont icon-document"></i>{{doc.name}}
       </li>
     </ul>
   </a>

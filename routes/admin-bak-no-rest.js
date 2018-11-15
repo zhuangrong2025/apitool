@@ -1,7 +1,6 @@
 var express = require("express")
 var router = express.Router()
 var Doc = require("../models/doc")
-var path = require("path")
 
 //统一返回格式用 router.use
 var responseData
@@ -45,8 +44,9 @@ router.post("/doc_add", function(req, res, next) {
 })
 
 // 删除文档
-router.delete("/doc/:id", function(req, res, next) {
-	var id = req.params.id
+router.post("/doc/del", function(req, res, next) {
+	console.log("del")
+	var id = req.body.id
 	Doc.findByIdAndRemove(id).then(function(doc){
 		res.send(doc)
 	})
@@ -65,14 +65,6 @@ router.get("/doc/modify/:id/:title", function(req, res, next) {
 	var id = req.params.id
 	var title = req.params.title
 	res.render("admin/doc_modify_rest", {id: id, title: title})
-})
-
-
-// rest api 2018-11-14
-router.get("/doc/view/:id", function(req, res, next) {
-	var id = req.params.id
-	console.log(id);
-
 })
 
 // 保存文档修改信息

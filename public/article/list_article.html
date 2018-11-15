@@ -23,7 +23,7 @@
       <span>智慧城市移动系统（SCM）Api</span>
     </div>
     <div class="list-opt">
-      <a href="/article/add_article.html" class="publish"> 新建文档 </a>
+      <a href="/article/add_article.html" class="publish">新建文档 </a>
     </div>
   </div>
   <!-- //工具栏 -->
@@ -40,7 +40,9 @@
             <th>操作</th>
           </tr>
           <tr v-for="(article, index) in articles">
-            <td><a :href="'/article/view_article.html?id=' + article._id">{{ article.title }}</a></td>
+            <td>
+              <a :href="'/article/view_article.html?id=' + article._id">{{ article.title }}</a>
+            </td>
             <!-- <td>{{ article.content }}</td> -->
             <td>cjf</td>
             <td>20180618</td>
